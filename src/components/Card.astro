@@ -1,61 +1,89 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string
+  body: string
+  href: string
+  linkText: string
+  img: string
+  color: string
 }
 
-const { href, title, body } = Astro.props;
+import { Image } from 'astro:assets'
+
+const { title, body, href, linkText, img, color } = Astro.props
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+<li class='card' style={{ backgroundColor: color }}>
+  {img && <Image src={img} aria-hidden alt='Texture image' />}
+  <div class='content-container'>
+    <h2>
+      {title}
+    </h2>
+    <p>
+      {body}
+    </p>
+    <div class='link-container'>
+      <a href={href}>{linkText}</a>
+    </div>
+  </div>
 </li>
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+  .card {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5625rem;
+    border: 1px solid #d1ecc2;
+
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card img {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+
+    mix-blend-mode: overlay;
+  }
+
+  .content-container {
+    mix-blend-mode: multiply;
+  }
+
+  .card h2 {
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.5rem; /* 111.111% */
+    letter-spacing: 0.45rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .card div.link-container {
+    border-radius: 0.625rem;
+    background: #181d1c;
+    padding: 1rem 1.1875rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mix-blend-mode: multiply;
+  }
+
+  .card a {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.225rem;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
 </style>

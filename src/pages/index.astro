@@ -1,63 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
+import { Image } from 'astro:assets'
+import heroBGImage from '../assets/hero-bg.png'
+import deepMindImage from '../assets/deepmind.jpg'
+import blocksImage from '../assets/blocks.jpeg'
+import microchipImage from '../assets/microchip.jpeg'
+
+const alphaText =
+  'Aspirare Alpha is the first generation of the Aspirare AI accelerator family, and is based on our innovative architecture using a mature technology node. It aims to double the throughput compared to Nvidia A100, while consuming a fraction of power and a lower cost. With our technology, our customers are able to reduce infrastructure costs and operating costs by 4X and 8X respectively with same throughput. Our Alpha chip offers calculations at 8-bit accuracy. This corresponds to 648 TOPS, which is equivalent to 2X of the throughput of the A100 on a single chip, with the option of multiple chips that can be put in parallel to further increase the throughput. The maximum bandwidth that can be achieved is 1.44Tb/s per chip, which is comparable to the A100.'
+const betaText =
+  'Aspirare Beta is the second generation of the Aspirare AI accelerator family, and is based on our innovative architecture using a mature FinFet technology node. Compared to the Alpha, the throughput has been increased by 5X, while the power has been reduced by 1.6X. Compared to Nvidia A100, the throughput has been increased by 10X, while the power has been reduced by 6X. Compared to Nvidia H100 PCIe, the throughput is slight higher, while the power has been reduced by 6X. Our Beta chip offers calculations at 8-bit accuracy. This corresponds to 3200 TOPS, which is equivalent to 5X of the throughput of the A100 on a single chip, with the option of multiple chips that can be put in parallel to further increase the throughput. The maximum bandwidth that can be achieved is 3.2Tb/s per chip, which is 2.13X greater than the A100, and 1.6X greater than the H100.'
 ---
 
 <Layout title='Asiprare AI'>
   <main>
-    <section id='hero'>
-      <h1>Advancing AI through a sustainable future</h1>
-    </section>
-    <section id='products'>
-      <h2>Products</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum
-      </p>
-      <div>
-        <div>
-          <h3>Aspirare alpha</h3>
-          <p>
-            Aspirare Alpha is the first generation of the Aspirare AI
-            accelerator family, and is based on our innovative architecture
-            using a mature technology node. It aims to double the throughput
-            compared to Nvidia A100, while consuming a fraction of power and a
-            lower cost. With our technology, our customers are able to reduce
-            infrastructure costs and operating costs by 4X and 8X respectively
-            with same throughput. Our Alpha chip offers calculations at 8-bit
-            accuracy. This corresponds to 648 TOPS, which is equivalent to 2X of
-            the throughput of the A100 on a single chip, with the option of
-            multiple chips that can be put in parallel to further increase the
-            throughput. The maximum bandwidth that can be achieved is 1.44Tb/s
-            per chip, which is comparable to the A100.
-          </p>
-        </div>
-        <div>
-          <h3>Aspirare beta</h3>
-          <p>
-            Aspirare Beta is the second generation of the Aspirare AI
-            accelerator family, and is based on our innovative architecture
-            using a mature FinFet technology node. Compared to the Alpha, the
-            throughput has been increased by 5X, while the power has been
-            reduced by 1.6X. Compared to Nvidia A100, the throughput has been
-            increased by 10X, while the power has been reduced by 6X. Compared
-            to Nvidia H100 PCIe, the throughput is slight higher, while the
-            power has been reduced by 6X. Our Beta chip offers calculations at
-            8-bit accuracy. This corresponds to 3200 TOPS, which is equivalent
-            to 5X of the throughput of the A100 on a single chip, with the
-            option of multiple chips that can be put in parallel to further
-            increase the throughput. The maximum bandwidth that can be achieved
-            is 3.2Tb/s per chip, which is 2.13X greater than the A100, and 1.6X
-            greater than the H100.
-          </p>
-        </div>
+    <div class='hero-container'>
+      <div class='hero-bg-container'>
+        <Image src={heroBGImage} aria-hidden alt='Texture image' />
       </div>
-      <section id='about'>
+      <section id='hero'>
+        <div class='container'>
+          <h1>Advancing AI through a sustainable future</h1>
+
+          <Image src={deepMindImage} alt='Brain Image' />
+        </div>
+      </section>
+      <section id='products'>
+        <div class='container'>
+          <h2>Products</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum
+          </p>
+          <ul>
+            <Card
+              title='Aspirare alpha'
+              body={alphaText}
+              href='/'
+              linkText='Learn More'
+              img={blocksImage}
+              color='#42b800'
+            />
+            <Card
+              title='Aspirare beta'
+              body={betaText}
+              href='/'
+              linkText='Learn More'
+              img={microchipImage}
+              color='#53e104'
+            />
+          </ul>
+        </div>
+      </section>
+    </div>
+    <section id='about'>
+      <div class='container'>
         <h2>About</h2><p>
           AI is the Future and it is Advancing Fast. Though early stages, we can
           already see a large impact of AI/ML on various industries and sectors,
@@ -67,17 +70,98 @@ import Card from '../components/Card.astro'
           for large AI/ML models are currently done predominately in Data
           Centers. Power consumption has a high negative impact on the planet.
         </p>
-      </section>
-      <section id='careers'>
-        <div><h2>We're hiring</h2><a href='/'>See open positions</a></div>
-      </section>
-      <section id='customers'><h2>we love our customers</h2></section>
+      </div>
     </section>
-    <section id='news'><h2>News</h2></section>
+    <section id='careers'>
+      <div class='container'>
+        <div><h2>We're hiring</h2><a href='/'>See open positions</a></div>
+      </div>
+    </section>
+    <section id='customers'>
+      <div class='container'><h2>we love our customers</h2></div>
+    </section>
+
+    <section id='news'><div class='container'><h2>News</h2></div></section>
     <section id='contact'>
-      <h2>Contact</h2>
-      <a href='mailto:info@aspirare.com'>info@aspirare.com</a>
-      <style></style>
+      <div class='container'>
+        <h2>Contact</h2>
+        <a href='mailto:info@aspirare.com'>info@aspirare.com</a>
+      </div>
     </section>
   </main>
+
+  <style>
+    main {
+      position: relative;
+    }
+
+    .hero-container {
+      position: relative;
+    }
+
+    .hero-bg-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      /* position: relative; */
+    }
+    .hero-bg-container img {
+      position: absolute;
+      width: 43.75rem;
+      height: 24.625rem;
+
+      flex-shrink: 0;
+      mix-blend-mode: screen;
+    }
+
+    #hero {
+      padding: 3rem 0;
+      background: linear-gradient(
+        to top,
+        var(--bg-primary),
+        var(--bg-primary) 40%,
+        transparent 50%
+      );
+    }
+
+    #hero .container {
+      mix-blend-mode: multiply;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0.45rem;
+      text-transform: uppercase;
+    }
+
+    .#hero img {
+      width: 100%;
+      flex-shrink: 0;
+      /* mix-blend-mode: plus-darker; */
+    }
+
+    section h2 {
+      font-size: 3rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0.6rem;
+      text-transform: uppercase;
+      padding-bottom: 1.5rem;
+    }
+
+    #products ul {
+      margin: 3.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  </style>
 </Layout>
