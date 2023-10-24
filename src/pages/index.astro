@@ -6,11 +6,20 @@ import heroBGImage from '../assets/hero-bg.png'
 import deepMindImage from '../assets/deepmind.jpg'
 import blocksImage from '../assets/blocks.jpeg'
 import microchipImage from '../assets/microchip.jpeg'
+import { s } from '../../dist/chunks/astro_55e8ae7e.mjs'
 
-const alphaText =
-  'Aspirare Alpha is the first generation of the Aspirare AI accelerator family, and is based on our innovative architecture using a mature technology node. It aims to double the throughput compared to Nvidia A100, while consuming a fraction of power and a lower cost. With our technology, our customers are able to reduce infrastructure costs and operating costs by 4X and 8X respectively with same throughput. Our Alpha chip offers calculations at 8-bit accuracy. This corresponds to 648 TOPS, which is equivalent to 2X of the throughput of the A100 on a single chip, with the option of multiple chips that can be put in parallel to further increase the throughput. The maximum bandwidth that can be achieved is 1.44Tb/s per chip, which is comparable to the A100.'
-const betaText =
-  'Aspirare Beta is the second generation of the Aspirare AI accelerator family, and is based on our innovative architecture using a mature FinFet technology node. Compared to the Alpha, the throughput has been increased by 5X, while the power has been reduced by 1.6X. Compared to Nvidia A100, the throughput has been increased by 10X, while the power has been reduced by 6X. Compared to Nvidia H100 PCIe, the throughput is slight higher, while the power has been reduced by 6X. Our Beta chip offers calculations at 8-bit accuracy. This corresponds to 3200 TOPS, which is equivalent to 5X of the throughput of the A100 on a single chip, with the option of multiple chips that can be put in parallel to further increase the throughput. The maximum bandwidth that can be achieved is 3.2Tb/s per chip, which is 2.13X greater than the A100, and 1.6X greater than the H100.'
+const alphaText = [
+  'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Alpha provides up to 2x higher performance at a 4x reduction in energy consumption compared to market standard solutions.',
+  'Aspirare’s driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
+]
+
+const betaText = [
+  'Our next generation AI accelerator presents significant improvements over our previous generation Aspirare Alpha. Innovative architecture improvements now provide comparable performance with flagship AI accelerators in the market with up to 6x reduction in energy consumption. Notably, the Aspirare Beta improves on the Aspirare Alpha performance by up to 5x with incremental improvements on energy consumption.'
+]
+
+const edgeText = [
+  'Aspirare’s analog computing design is uniquely suited to enable data center quality AI computing directly at the edge. Aspirare Edge can be directly integrated on edge, wearables, mobile and IoT devices empowering AI applications where on-device low-latency processing is critical. Our analog architecture is uniquely suited for small form factor applications, and our reduced energy consumption and thermal dissipation requirements can reduce the size of supporting battery and cooling requirements.'
+]
 ---
 
 <Layout title='Asiprare AI'>
@@ -21,7 +30,7 @@ const betaText =
       </div>
       <section id='hero'>
         <div class='container'>
-          <h1>Advancing AI through a sustainable future</h1>
+          <h1>Sustainably empowering the AI enabled future.</h1>
 
           <Image src={deepMindImage} alt='Brain Image' />
         </div>
@@ -30,13 +39,15 @@ const betaText =
         <div class='container'>
           <h2>Products</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum
+            What will the AI enabled future look like? Current AI developments
+            are constrained by two major factors - compute capability and the
+            energy required to run current generation AI computing hardware.
+          </p>
+          <p>
+            Aspirare aims to empower the next generation of AI with our power
+            efficient AI compute hardware. With edge and data center deployment
+            applications, our products bring next-generation analog computing to
+            the forefront of the AI future.
           </p>
           <ul>
             <Card
@@ -55,13 +66,21 @@ const betaText =
               img={microchipImage}
               color='#53e104'
             />
+            <Card
+              title='Aspirare beta'
+              body={edgeText}
+              href='/'
+              linkText='Learn More'
+              color='#53e104'
+            />
           </ul>
         </div>
       </section>
     </div>
     <section id='about'>
       <div class='container'>
-        <h2>About</h2><p>
+        <h2>About</h2>
+        <p>
           AI is the Future and it is Advancing Fast. Though early stages, we can
           already see a large impact of AI/ML on various industries and sectors,
           powered by DALLE2, ChatGPT, Google Bard, Microsoft M365 and many
@@ -139,6 +158,9 @@ const betaText =
       line-height: normal;
       letter-spacing: 0.45rem;
       text-transform: uppercase;
+    }
+    p {
+      margin-bottom: 1.5rem;
     }
 
     .#hero img {

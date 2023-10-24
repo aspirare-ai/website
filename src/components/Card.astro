@@ -1,13 +1,14 @@
 ---
 interface Props {
   title: string
-  body: string
+  body: string[]
   href: string
   linkText: string
-  img: string
+  img?: ImageMetadata
   color: string
 }
 
+import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
 
 const { title, body, href, linkText, img, color } = Astro.props
@@ -19,9 +20,8 @@ const { title, body, href, linkText, img, color } = Astro.props
     <h2>
       {title}
     </h2>
-    <p>
-      {body}
-    </p>
+    {body.map((p) => <p>{p}</p>)}
+
     <div class='link-container'>
       <a href={href}>{linkText}</a>
     </div>
@@ -74,6 +74,10 @@ const { title, body, href, linkText, img, color } = Astro.props
     align-items: center;
     justify-content: center;
     mix-blend-mode: multiply;
+  }
+
+  .card p {
+    margin-bottom: 1.5rem;
   }
 
   .card a {
