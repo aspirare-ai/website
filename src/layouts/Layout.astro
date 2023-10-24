@@ -152,6 +152,16 @@ const { title } = Astro.props
       body * {
         margin: 0;
         padding: 0;
+        /* padding-top: 11.8rem; */
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-primary);
+        z-index: 9;
       }
 
       .contact-banner {
@@ -207,6 +217,10 @@ const { title } = Astro.props
       .container {
         padding: 0 1.3rem;
         max-width: 75rem;
+      }
+
+      main {
+        top: 11.8rem;
       }
 
       footer .container {
