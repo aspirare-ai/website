@@ -22,9 +22,13 @@ const { title, body, href, linkText, img, color } = Astro.props
     </h2>
     {body.map((p) => <p>{p}</p>)}
 
-    <div class='link-container'>
-      <a href={href}>{linkText}</a>
-    </div>
+    {
+      linkText && (
+        <div class='link-container'>
+          <a href={href}>{linkText}</a>
+        </div>
+      )
+    }
   </div>
 </li>
 <style>
@@ -86,7 +90,7 @@ const { title, body, href, linkText, img, color } = Astro.props
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.225rem;
-    color: #ffffff;
+    color: var(--text-secondary);
     text-decoration: none;
     text-transform: uppercase;
   }

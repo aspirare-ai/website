@@ -1,9 +1,11 @@
 ---
 import { Image } from 'astro:assets'
-import footerLogo from '../assets/footer-logo.png'
 
+import heroBGImage from '../assets/hero-bg.png'
+import textureBg from '../assets/hero-bg.png'
 const { default: menuButtonHtml } = await import(`./menu.svg?raw`)
 const { default: aspirareLogoHtml } = await import(`./aspirareLogo.svg?raw`)
+const { default: xIconHtml } = await import(`./x.svg?raw`)
 
 interface Props {
   title: string
@@ -48,22 +50,37 @@ const { title } = Astro.props
       </div>
 
       <nav>
+        <Image id='nav-bg' src={textureBg} aria-hidden alt='Texture image' />
         <div class='container navbar-container'>
-          <a href='/' title='Aspirare'>
-            <Fragment set:html={aspirareLogoHtml} />
-          </a>
+          <div class='navbar-head'>
+            <a href='#' title='Aspirare'>
+              <Fragment set:html={aspirareLogoHtml} />
+            </a>
 
-          <Fragment set:html={menuButtonHtml} />
-
-          <ul id='menulist'>
+            <button
+              id='toggleMenu'
+              class='menuButton'
+              title='Open Navigation Menu'
+              aria-expanded='false'
+            >
+              <Fragment set:html={menuButtonHtml} />
+            </button>
+          </div>
+          <ul class='container'>
+            <li><a href='#products'>products</a></li>
+            <li><a href='#about'>about</a></li>
+            <li><a href='#about'>careers</a></li>
+            <li><a href='#news'>news</a></li>
+            <li><a href='#contact'>contact</a></li>
+          </ul>
+          <!-- <ul id='menulist'>
             <li><a href='#products'>products</a></li>
             <li><a href='#about'>about</a></li>
             <li><a href='#careers'>careers</a></li>
             <li><a href='#news'>news</a></li>
             <li><a href='#contact'>contact</a></li>
-          </ul>
+          </ul> -->
         </div>
-        <!-- <div class='container navbar-container__mobile'></div> -->
       </nav>
     </header>
 
@@ -89,6 +106,7 @@ const { title } = Astro.props
 
         --bg-primary: #d1ecc2;
         --text-primary: #181d1c;
+        --text-secondary: #ffffff;
 
         --font-family: Roboto Mono;
       }
@@ -96,6 +114,8 @@ const { title } = Astro.props
       html {
         font-family: var(--font-family), system-ui, sans-serif;
         background: var(--bg-primary);
+        scroll-padding-top: 11.8rem;
+        scroll-behavior: smooth;
       }
 
       body {
@@ -155,25 +175,115 @@ const { title } = Astro.props
 
       nav {
         position: relative;
+        transition: all 0.2s ease;
+        overflow: hidden;
+      }
+
+      nav #menu rect {
+        transition: all 0.2s ease;
+      }
+
+      nav[open='true'] {
+        background-color: #181d1c;
+      }
+
+      nav img {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        mix-blend-mode: multiply;
+        object-fit: contain;
+      }
+
+      nav[open='true'] img {
+        opacity: 1;
+      }
+
+      nav[open='true'] #menu rect:first-of-type {
+        transform: rotate(41deg) translate(4px, -5px);
+      }
+
+      nav[open='true'] #menu rect:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      nav[open='true'] #menu rect:last-of-type {
+        transform: rotate(-43deg) translate(-20px, -4px);
       }
 
       .container.navbar-container {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
         padding-top: 2.25rem;
         padding-bottom: 2.25rem;
-        scroll-behavior: smooth;
+
+        position: relative;
       }
 
-      .navbar-container a svg {
-        width: 12.35856rem;
-        height: 3rem;
-        flex-shrink: 0;
+      .navbar-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
-      .navbar-container ul {
+      .navbar-container svg {
+        fill: var(--text-primary);
+      }
+
+      nav[open='true'] .navbar-container svg {
+        fill: var(--text-secondary);
+      }
+
+      .navbar-container .menuButton {
+        background: none;
+        border: none;
+        padding: 0.25rem;
+      }
+
+      [hidden='true'] {
         display: none;
+      }
+
+      nav ul.container {
+        height: 0;
+        opacity: 0;
+        transition:
+          height 0.2s ease,
+          opacity 0.5s ease;
+        overflow: hidden;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      nav li:first-of-type {
+        margin-top: 2.5rem;
+      }
+
+      nav li a {
+        color: var(--text-secondary);
+        font-size: 2.25rem;
+        font-weight: 700;
+        letter-spacing: 7.2px;
+        word-wrap: break-word;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+      }
+
+      nav li a:hover {
+        color: var(--accent);
+      }
+
+      nav[open='true'] ul {
+        height: 100dvh;
+        opacity: 1;
       }
 
       .container {
@@ -188,6 +298,10 @@ const { title } = Astro.props
         bottom: 0;
         left: 0;
         right: 0;
+      }
+
+      .navbar-container__mobile svg {
+        fill: var(--text-secondary);
       }
 
       main {
@@ -224,5 +338,45 @@ const { title } = Astro.props
         }
       }
     </style>
+    <script>
+      const toggleMenuButton = document.querySelector('#toggleMenu')
+
+      function toggleMenu() {
+        const expanded =
+          toggleMenuButton.getAttribute('aria-expanded') === 'true' || false
+        const newExpandedState = !expanded
+        toggleMenuButton.setAttribute('aria-expanded', `${newExpandedState}`)
+
+        const nav = document.querySelector('nav')
+        if (nav) {
+          if (nav.getAttribute('open')) {
+            nav.removeAttribute('open')
+          } else {
+            nav.setAttribute('open', 'true')
+          }
+        }
+
+        const menu = toggleMenuButton.nextElementSibling
+        if (menu) {
+          if (menu.getAttribute('hidden')) {
+            menu.removeAttribute('hidden')
+          } else {
+            menu.setAttribute('hidden', 'true')
+          }
+        }
+
+        const menuLinks = document.querySelectorAll('nav  a')
+
+        menuLinks.forEach((link) => {
+          if (newExpandedState) {
+            link.addEventListener('click', toggleMenu)
+          } else {
+            link.removeEventListener('click', toggleMenu)
+          }
+        })
+      }
+
+      toggleMenuButton?.addEventListener('click', toggleMenu)
+    </script>
   </body>
 </html>
