@@ -46,7 +46,7 @@ const { title } = Astro.props
 
       <nav>
         <div class='container navbar-container'>
-          <a href='#hero' title='Aspirare'
+          <a href='/' title='Aspirare'
             ><svg
               xmlns='http://www.w3.org/2000/svg'
               width='198'
@@ -110,7 +110,7 @@ const { title } = Astro.props
         </div>
       </nav>
     </header>
-    <div class='spacer'></div>
+
     <slot />
     <footer>
       <div class='container'>
@@ -219,13 +219,9 @@ const { title } = Astro.props
         padding: 0 1.3rem;
         max-width: 75rem;
       }
-      /*
-      .spacer {
-        height: 11.8rem;
-      } */
 
       main {
-        margin-top: 11.8rem;
+        /* margin-top: 11.8rem; */
       }
 
       footer .container {
