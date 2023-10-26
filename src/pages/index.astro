@@ -3,9 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { Image } from 'astro:assets'
 import heroBGImage from '../assets/hero-bg.png'
-import deepMindImage from '../assets/deepmind.jpg'
-import blocksImage from '../assets/blocks.jpeg'
-import microchipImage from '../assets/microchip.jpeg'
+import deepMindImage from '../assets/deepmind.png'
 import textureImage from '../assets/texture.jpeg'
 import newsTexture from '../assets/news-texture.png'
 
@@ -59,16 +57,18 @@ const placeholder = [
             <Card
               title='Aspirare alpha'
               body={placeholder}
-              img={blocksImage}
-              color='#42b800'
+              color='var(--accent)'
             />
             <Card
               title='Aspirare beta'
               body={placeholder}
-              img={microchipImage}
-              color='#53e104'
+              color='var(--accent)'
             />
-            <Card title='Aspirare beta' body={placeholder} color='#53e104' />
+            <Card
+              title='Aspirare beta'
+              body={placeholder}
+              color='var(--accent)'
+            />
           </ul>
         </div>
       </section>
@@ -178,10 +178,16 @@ const placeholder = [
 
     main {
       position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .hero-container {
       position: relative;
+      display: flex;
+    flex-direction: column;
     }
 
     .hero-bg-container {
@@ -192,8 +198,8 @@ const placeholder = [
     }
     .hero-bg-container img {
       position: absolute;
-      width: 43.75rem;
-      height: 24.625rem;
+      width: 100%;
+      height: 75%
 
       flex-shrink: 0;
       mix-blend-mode: screen;
@@ -213,7 +219,14 @@ const placeholder = [
       mix-blend-mode: multiply;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 3rem;
+    }
+
+    #hero img {
+      width: 100%;
+      height: 100%;
+      max-width: 30rem;
     }
 
     h1 {
@@ -228,11 +241,6 @@ const placeholder = [
       margin-bottom: 1.5rem;
     }
 
-    .#hero img {
-      width: 100%;
-      flex-shrink: 0;
-    }
-
     section h2 {
       font-size: 3rem;
       font-style: normal;
@@ -241,6 +249,10 @@ const placeholder = [
       letter-spacing: 0.6rem;
       text-transform: uppercase;
       padding-bottom: 1.5rem;
+    }
+
+    #products {
+      mix-blend-mode: multiply;
     }
 
     #products ul {
@@ -273,6 +285,9 @@ const placeholder = [
 
     #about .icon-container {
       mix-blend-mode: lighten;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     #about svg {
@@ -284,7 +299,7 @@ const placeholder = [
     }
 
     #careers {
-      background-color: #000000;
+
       color: var(--accent);
       padding-bottom: 3.75rem;
     }
@@ -345,6 +360,7 @@ const placeholder = [
     #news img {
       position: absolute;
       object-fit: cover;
+      width: 100%;
       top: 0;
       left: 0;
       mix-blend-mode: screen;
@@ -352,8 +368,10 @@ const placeholder = [
 
     #news .container {
       padding: 9rem 0;
-
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     #news h2 {
@@ -366,8 +384,15 @@ const placeholder = [
     #news .card-carousel {
       display: flex;
       gap: 1rem;
-      overflow: scroll;
+      overflow: auto;
       padding: 1rem 1.3rem;
+      width: 100%;
+      scrollbar-color: red orange;
+      scrollbar-width: thin;
+    }
+
+    #news .card-carousel::-webkit-scrollbar {
+      display: none;
     }
 
     #news .news-card {
@@ -406,6 +431,31 @@ const placeholder = [
       font-weight: 700;
       letter-spacing: 3.6px;
       text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+      #hero {
+        padding: 6rem 0;
+        align-self: flex-start;
+      }
+      #hero .container {
+        width: 110vw;
+        flex-direction: row;
+        align-items: center;
+
+      }
+
+      #hero img {
+        width: 140%;
+        height: 140%;
+      }
+    }
+
+    @media (min-width: 1200px) {
+       #hero {
+        align-self: center;
+       }
+
     }
   </style>
 </Layout>
