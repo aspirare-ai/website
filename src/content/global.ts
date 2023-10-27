@@ -3,7 +3,7 @@ export const contactSales = 'contact aspirare sales'
 export const navLinks = [
   { url: '/#products', text: 'products' },
   { url: '/#about', text: 'about' },
-  { url: '/#careers', text: 'careers' },
+  { url: '/#about', text: 'careers' },
   { url: '/#news', text: 'news' },
   { url: '/#contact', text: 'contact' }
 ]
