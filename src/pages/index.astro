@@ -33,15 +33,12 @@ const placeholder = [
         <Image src={heroBGImage} aria-hidden alt='Texture image' />
       </div>
       <section id='hero'>
-        <div class='container'>
+        <div class='container hero-top'>
           <h1>Sustainably empowering the AI enabled future.</h1>
 
           <Image src={deepMindImage} aria-hidden alt='Brain Image' />
         </div>
-      </section>
-      <section id='products'>
-        <div class='container'>
-          <h2>Products</h2>
+        <div class='container content'>
           <p>
             What will the AI enabled future look like? Current AI developments
             are constrained by two major factors - compute capability and the
@@ -53,6 +50,12 @@ const placeholder = [
             applications, our products bring next-generation analog computing to
             the forefront of the AI future.
           </p>
+        </div>
+      </section>
+      <section id='products'>
+        <div class='container'>
+          <h2>Products</h2>
+
           <ul>
             <Card
               title='Aspirare alpha'
@@ -79,15 +82,7 @@ const placeholder = [
         <div class='container'>
           <h2>About</h2>
           <p>
-            AI is the Future and it is Advancing Fast. Though early stages, we
-            can already see a large impact of AI/ML on various industries and
-            sectors, powered by DALLE2, ChatGPT, Google Bard, Microsoft M365 and
-            many similar products.
-          </p><p>
-            AI/ML workloads are computationally heavy (requiring high power
-            consumption) and are increasing exponentially. Computations for
-            large AI/ML models are currently done predominately in Data Centers.
-            Power consumption has a high negative impact on the planet.
+           Aspirare is the Latin form of “to aspire” and “to breathe in”. Our mission is to breathe life into the next evolution of AI developments and applications. Our innovative analog approach removes the energy consumption and thermal constraints in place with current generation digital designs, empowering the potential of high-performance compute from data center to edge.
           </p>
           <div class='icon-container'>
             <svg
@@ -123,6 +118,7 @@ const placeholder = [
         <div class='container'>
           <div class='box'>
             <h2>careers</h2>
+            <p>Aspirare is a rapidly growing Canadian startup building a world-class team to advance the development of our analog computing solution. If you’re interested in joining our ambition to empower the AI enabled future, please reach out to info@aspirare.io or view the current job postings at the link below.</p>
             <div class='link-container'>
               <a href='/'>See open positions</a>
             </div>
@@ -220,7 +216,16 @@ const placeholder = [
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3rem;
+      gap: 2rem;
+    }
+
+    #hero div:first-of-type {
+        margin-bottom: 4rem;
+      }
+
+
+    #hero .container.content {
+      flex-direction: column;
     }
 
     #hero img {
@@ -439,10 +444,8 @@ const placeholder = [
         align-self: flex-start;
       }
       #hero .container {
-        width: 110vw;
         flex-direction: row;
         align-items: center;
-
       }
 
       #hero img {
