@@ -1,11 +1,24 @@
 ---
 import { Image } from 'astro:assets'
+import textureBg from '../assets/images/hero-bg.png'
+import '../styles/layout.css'
 
-import heroBGImage from '../assets/hero-bg.png'
-import textureBg from '../assets/hero-bg.png'
-const { default: menuButtonHtml } = await import(`./menu.svg?raw`)
-const { default: aspirareLogoHtml } = await import(`./aspirareLogo.svg?raw`)
-const { default: xIconHtml } = await import(`./x.svg?raw`)
+import {
+  email,
+  contactSales,
+  navLinks,
+  toc,
+  copyright
+} from '../content/global'
+import { isTypeOnlyExportDeclaration } from 'typescript'
+
+const { default: rightArrowHtml } = await import(
+  `../assets/svg/right-arrow.svg?raw`
+)
+const { default: menuButtonHtml } = await import(`../assets/svg/menu.svg?raw`)
+const { default: aspirareLogoHtml } = await import(
+  `../assets/svg/aspirareLogo.svg?raw`
+)
 
 interface Props {
   title: string
@@ -34,18 +47,8 @@ const { title } = Astro.props
     <header>
       <div class='contact-banner'>
         <div>
-          <a href='mailto:info@aspirare.com'>contact aspirare sales</a>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-          >
-            <path
-              d='M23.5594 13.0595C24.1453 12.4735 24.1453 11.522 23.5594 10.936L17.5594 4.93604C16.9734 4.3501 16.0219 4.3501 15.4359 4.93604C14.85 5.52197 14.85 6.47354 15.4359 7.05947L18.8766 10.5001H1.5C0.670312 10.5001 0 11.1704 0 12.0001C0 12.8298 0.670312 13.5001 1.5 13.5001H18.8766L15.4359 16.9407C14.85 17.5267 14.85 18.4782 15.4359 19.0642C16.0219 19.6501 16.9734 19.6501 17.5594 19.0642L23.5594 13.0642V13.0595Z'
-              fill='black'></path>
-          </svg>
+          <a href={`mailto:${email}`}>{contactSales}</a>
+          <Fragment set:html={rightArrowHtml} />
         </div>
       </div>
 
@@ -67,11 +70,13 @@ const { title } = Astro.props
             </button>
           </div>
           <ul class='container'>
-            <li><a href='/#products'>products</a></li>
-            <li><a href='/#about'>about</a></li>
-            <li><a href='/#careers'>careers</a></li>
-            <li><a href='/#news'>news</a></li>
-            <li><a href='/#contact'>contact</a></li>
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a href={link.url}>{link.text}</a>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </nav>
@@ -81,299 +86,11 @@ const { title } = Astro.props
     <footer>
       <div class='container'>
         <Fragment set:html={aspirareLogoHtml} />
-        <a href='/terms-conditions'>Terms & Conditions</a>
-        <div>copyright aspirare 2023</div>
+        <a href={toc.url}>{toc.text}</a>
+        <div>{copyright}</div>
       </div>
     </footer>
-    <style is:global>
-      :root {
-        --accent: #52d30a;
-        --accent-light: #a8c896;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-          45deg,
-          rgb(var(--accent)),
-          rgb(var(--accent-light)) 30%,
-          white 60%
-        );
 
-        --bg-primary: #d1ecc2;
-        --text-primary: #181d1c;
-        --text-secondary: #ffffff;
-
-        --font-family: Roboto Mono;
-      }
-
-      html {
-        font-family: var(--font-family), system-ui, sans-serif;
-        background: var(--bg-primary);
-        scroll-padding-top: 11.8rem;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-size: 1.125rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        display: flex;
-        flex-direction: column;
-        min-height: 100dvh;
-      }
-
-      body * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background-color: var(--bg-primary);
-        z-index: 9;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .contact-banner {
-        background-color: var(--accent);
-        height: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .contact-banner div {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .contact-banner a {
-        color: #181d1c;
-
-        font-family: Roboto Mono;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        letter-spacing: 0.2rem;
-        text-transform: uppercase;
-        text-decoration: none;
-      }
-
-      .contact-banner svg {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
-
-      nav {
-        position: relative;
-        transition: all 0.2s ease;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100vw;
-      }
-
-      nav #menu rect {
-        transition: all 0.2s ease;
-      }
-
-      nav[open='true'] {
-        background-color: #181d1c;
-      }
-
-      nav img {
-        position: absolute;
-        height: 100%;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        object-fit: contain;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-        mix-blend-mode: multiply;
-        object-fit: contain;
-      }
-
-      nav[open='true'] img {
-        opacity: 1;
-      }
-
-      nav[open='true'] #menu rect:first-of-type {
-        transform: rotate(41deg) translate(4px, -5px);
-      }
-
-      nav[open='true'] #menu rect:nth-of-type(2) {
-        opacity: 0;
-      }
-
-      nav[open='true'] #menu rect:last-of-type {
-        transform: rotate(-43deg) translate(-20px, -4px);
-      }
-
-      .container.navbar-container {
-        display: flex;
-        flex-direction: column;
-        padding-top: 2.25rem;
-        padding-bottom: 2.25rem;
-        width: 100%;
-        position: relative;
-      }
-
-      .navbar-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .navbar-container svg {
-        fill: var(--text-primary);
-      }
-
-      nav[open='true'] .navbar-container svg {
-        fill: var(--text-secondary);
-      }
-
-      .navbar-container .menuButton {
-        background: none;
-        border: none;
-        padding: 0.25rem;
-      }
-
-      [hidden='true'] {
-        display: none;
-      }
-
-      nav ul.container {
-        height: 0;
-        opacity: 0;
-        transition:
-          height 0.2s ease,
-          opacity 0.5s ease;
-        overflow: hidden;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      nav li:first-of-type {
-        margin-top: 2.5rem;
-      }
-
-      nav li a {
-        color: var(--text-secondary);
-        font-size: 2.25rem;
-        font-weight: 700;
-        letter-spacing: 7.2px;
-        word-wrap: break-word;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: color 0.2s ease;
-      }
-
-      nav li a:hover {
-        color: var(--accent);
-      }
-
-      nav[open='true'] ul {
-        height: 100dvh;
-        opacity: 1;
-      }
-
-      .spacer {
-        height: 11.8rem;
-      }
-
-      section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .container {
-        padding: 0 1.3rem;
-        max-width: 67rem;
-      }
-
-      .navbar-container__mobile {
-        position: fixed;
-        background-color: black;
-        top: 4rem;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .navbar-container__mobile svg {
-        fill: var(--text-secondary);
-      }
-
-      main {
-        /* margin-top: 11.8rem; */
-      }
-
-      footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-
-        font-weight: 700;
-        letter-spacing: 3.2px;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding-bottom: 6rem;
-      }
-
-      footer a {
-        text-decoration: none;
-        color: var(--text-primary);
-      }
-
-      footer svg {
-        height: 2rem;
-        fill: var(--text-primary);
-      }
-
-      @media screen and (min-width: 390px) {
-        .container {
-          padding: 0 2rem;
-        }
-      }
-
-      @media screen and (min-width: 768px) {
-        .container {
-          padding: 0 4rem;
-        }
-      }
-
-      @media screen and (min-width: 1200px) {
-        .contact-banner a {
-          font-size: 1.125rem;
-
-          letter-spacing: 0.225rem;
-        }
-
-        .container {
-          padding: 0 2rem;
-        }
-      }
-    </style>
     <script>
       const toggleMenuButton = document.querySelector('#toggleMenu')
 

@@ -2,27 +2,18 @@
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { Image } from 'astro:assets'
-import heroBGImage from '../assets/hero-bg.png'
-import deepMindImage from '../assets/deepmind.png'
-import textureImage from '../assets/texture.jpeg'
-import newsTexture from '../assets/news-texture.png'
+import heroBGImage from '../assets/images/hero-bg.png'
+import deepMindImage from '../assets/images/deepmind.png'
+import textureImage from '../assets/images/texture.jpeg'
+import newsTexture from '../assets/images/news-texture.png'
 
-const alphaText = [
-  'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Alpha provides up to 2x higher performance at a 4x reduction in energy consumption compared to market standard solutions.',
-  'Aspirare’s driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
-]
+import { hero, products, about, careers, news, contact } from '../content/index'
+import { email } from '../content/global'
+import '../styles/index.css'
 
-const betaText = [
-  'Our next generation AI accelerator presents significant improvements over our previous generation Aspirare Alpha. Innovative architecture improvements now provide comparable performance with flagship AI accelerators in the market with up to 6x reduction in energy consumption. Notably, the Aspirare Beta improves on the Aspirare Alpha performance by up to 5x with incremental improvements on energy consumption.'
-]
-
-const edgeText = [
-  'Aspirare’s analog computing design is uniquely suited to enable data center quality AI computing directly at the edge. Aspirare Edge can be directly integrated on edge, wearables, mobile and IoT devices empowering AI applications where on-device low-latency processing is critical. Our analog architecture is uniquely suited for small form factor applications, and our reduced energy consumption and thermal dissipation requirements can reduce the size of supporting battery and cooling requirements.'
-]
-
-const placeholder = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
-]
+const { default: heartLeafHtml } = await import(
+  `../assets/svg/heart-leaf.svg?raw`
+)
 ---
 
 <Layout title='Asiprare AI'>
@@ -34,44 +25,26 @@ const placeholder = [
       </div>
       <section id='hero'>
         <div class='container hero-top'>
-          <h1>Sustainably empowering the AI enabled future.</h1>
-
+          <h1>{hero.title}</h1>
           <Image src={deepMindImage} aria-hidden alt='Brain Image' />
         </div>
         <div class='container content'>
-          <p>
-            What will the AI enabled future look like? Current AI developments
-            are constrained by two major factors - compute capability and the
-            energy required to run current generation AI computing hardware.
-          </p>
-          <p>
-            Aspirare aims to empower the next generation of AI with our power
-            efficient AI compute hardware. With edge and data center deployment
-            applications, our products bring next-generation analog computing to
-            the forefront of the AI future.
-          </p>
+          {hero.body.map((text) => <p>{text}</p>)}
         </div>
       </section>
       <section id='products'>
         <div class='container'>
-          <h2>Products</h2>
-
+          <h2>{products.title}</h2>
           <ul>
-            <Card
-              title='Aspirare alpha'
-              body={placeholder}
-              color='var(--accent)'
-            />
-            <Card
-              title='Aspirare beta'
-              body={placeholder}
-              color='var(--accent)'
-            />
-            <Card
-              title='Aspirare beta'
-              body={placeholder}
-              color='var(--accent)'
-            />
+            {
+              products.productCards.map((card) => (
+                <Card
+                  title={card.title}
+                  body={card.body}
+                  color='var(--accent)'
+                />
+              ))
+            }
           </ul>
         </div>
       </section>
@@ -80,47 +53,20 @@ const placeholder = [
       <Image id='texture' src={textureImage} aria-hidden alt='Brain Image' />
       <section id='about'>
         <div class='container'>
-          <h2>About</h2>
-          <p>
-           Aspirare is the Latin form of “to aspire” and “to breathe in”. Our mission is to breathe life into the next evolution of AI developments and applications. Our innovative analog approach removes the energy consumption and thermal constraints in place with current generation digital designs, empowering the potential of high-performance compute from data center to edge.
-          </p>
+          <h2>{about.title}</h2>
+          {about.body.map((text) => <p>{text}</p>)}
           <div class='icon-container'>
-            <svg
-              width='306'
-              height='280'
-              viewBox='0 0 306 280'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <g clip-path='url(#clip0_172_193)'>
-                <path
-                  id='heart'
-                  d='M125.63 256.047L124.272 254.789L29.1226 165.812C12.4498 150.226 3 128.351 3 105.437V103.633C3 65.1327 30.1545 32.1014 67.7364 24.8827C89.1341 20.7264 111.021 25.703 128.454 38.0624C133.342 41.5624 137.904 45.6092 142.031 50.2577C144.312 47.6327 146.756 45.2264 149.363 42.9842C151.372 41.2342 153.436 39.5936 155.608 38.0624C173.042 25.703 194.928 20.7264 216.326 24.828C253.908 32.0467 281.062 65.1327 281.062 103.633V105.437C281.062 128.351 271.613 150.226 254.94 165.812L159.79 254.789L158.432 256.047C153.979 260.203 148.114 262.555 142.031 262.555C135.949 262.555 130.083 260.258 125.63 256.047ZM132.853 79.2967C132.636 79.1327 132.473 78.9139 132.31 78.6952L122.643 67.7577L122.589 67.703C110.043 53.5389 91.0893 47.0858 72.6242 50.6405C47.3162 55.5077 29.0683 77.7108 29.0683 103.633V105.437C29.0683 121.023 35.5311 135.953 46.8817 146.562L142.031 235.539L237.181 146.562C248.531 135.953 254.994 121.023 254.994 105.437V103.633C254.994 77.7655 236.746 55.5077 211.492 50.6405C193.027 47.0858 174.019 53.5936 161.528 67.703C161.528 67.703 161.528 67.703 161.474 67.7577C161.419 67.8124 161.474 67.7577 161.419 67.8124L151.752 78.7499C151.59 78.9686 151.372 79.1327 151.209 79.3514C148.765 81.8124 145.453 83.1796 142.031 83.1796C138.61 83.1796 135.297 81.8124 132.853 79.3514V79.2967Z'
-                ></path>
-              </g>
-              <path
-                d='M210.281 82.4997C181.881 82.4997 157.853 101.008 149.687 126.523C161.827 120.414 175.521 117 190.047 117H221.844C225.023 117 227.625 119.587 227.625 122.75C227.625 125.912 225.023 128.5 221.844 128.5H216.062H190.047C184.049 128.5 178.231 129.183 172.631 130.44C163.272 132.561 154.564 136.334 146.832 141.473C125.839 155.381 112 179.136 112 206.125V211.875C112 216.654 115.866 220.5 120.672 220.5C125.478 220.5 129.344 216.654 129.344 211.875V206.125C129.344 188.623 136.823 172.883 148.783 161.85C155.938 188.983 180.761 209 210.281 209H210.643C258.374 208.748 297 161.958 297 104.278C297 88.9685 294.29 74.4138 289.376 61.2966C288.437 58.8169 284.787 58.9247 283.522 61.2606C276.729 73.9106 263.288 82.4997 247.859 82.4997H210.281Z'
-                fill='#52D30A'></path>
-              <defs>
-                <clipPath id='clip0_172_193'>
-                  <rect
-                    width='278.062'
-                    height='280'
-                    fill='white'
-                    transform='translate(3)'></rect>
-                </clipPath>
-              </defs>
-            </svg>
+            <Fragment set:html={heartLeafHtml} />
           </div>
         </div>
       </section>
       <section id='careers'>
         <div class='container'>
           <div class='box'>
-            <h2>careers</h2>
-            <p>Aspirare is a rapidly growing Canadian startup building a world-class team to advance the development of our analog computing solution. If you’re interested in joining our ambition to empower the AI enabled future, please reach out to info@aspirare.io or view the current job postings at the link below.</p>
+            <h2>{careers.title}</h2>
+            {careers.body.map((text) => <p>{text}</p>)}
             <div class='link-container'>
-              <a href='/'>See open positions</a>
+              <a href={careers.positions.url}>{careers.positions.text}</a>
             </div>
           </div>
         </div>
@@ -152,326 +98,27 @@ const placeholder = [
     <section id='news'>
       <Image src={newsTexture} alt='news texture' aria-hidden />
       <div class='container'>
-        <h2>News</h2><div class='card-carousel'>
-          <div class='news-card'></div><div class='news-card'></div>
+        <h2>{news.title}</h2>
+        <div class='card-carousel'>
+          {
+            news.newsCards.map((news) => (
+              <div class='news-card'>
+                <h3>{news.title}</h3>
+                <p>{news.body}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
     <section id='contact'>
       <div class='container'>
-        <h2>Contact</h2>
+        <h2>{contact.title}</h2>
+        {contact.body.map((text) => <p>{text}</p>)}
         <div class='link-container'>
-          <a href='mailto:info@aspirare.com'>info@aspirare.com</a>
+          <a href={`mailto:${email}`}>{email}</a>
         </div>
       </div>
     </section>
   </main>
-
-  <style>
-    .spacer {
-      height: 11.8rem;
-    }
-
-    main {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .hero-container {
-      position: relative;
-      display: flex;
-    flex-direction: column;
-    }
-
-    .hero-bg-container {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
-    .hero-bg-container img {
-      position: absolute;
-      width: 100%;
-      height: 75%
-
-      flex-shrink: 0;
-      mix-blend-mode: screen;
-    }
-
-    #hero {
-      padding: 3rem 0;
-      background: linear-gradient(
-        to top,
-        var(--bg-primary),
-        var(--bg-primary) 40%,
-        transparent 50%
-      );
-    }
-
-    #hero .container {
-      mix-blend-mode: multiply;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    #hero div:first-of-type {
-        margin-bottom: 4rem;
-      }
-
-
-    #hero .container.content {
-      flex-direction: column;
-    }
-
-    #hero img {
-      width: 100%;
-      height: 100%;
-      max-width: 30rem;
-    }
-
-    h1 {
-      font-size: 2.25rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      letter-spacing: 0.45rem;
-      text-transform: uppercase;
-    }
-    p {
-      margin-bottom: 1.5rem;
-    }
-
-    section h2 {
-      font-size: 3rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      letter-spacing: 0.6rem;
-      text-transform: uppercase;
-      padding-bottom: 1.5rem;
-    }
-
-    #products {
-      mix-blend-mode: multiply;
-    }
-
-    #products ul {
-      margin: 3.5rem 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .company-container {
-      position: relative;
-      overflow: hidden;
-      background-color: #131515;
-    }
-
-    .company-container img#texture {
-      position: absolute;
-      object-fit: cover;
-      height: 200%;
-      width: 200vw;
-      top: 0;
-      left: 0;
-      mix-blend-mode: overlay;
-    }
-
-    #about .container {
-      color: var(--text-secondary);
-      padding-top: 4rem;
-    }
-
-    #about .icon-container {
-      mix-blend-mode: lighten;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #about svg {
-      margin-left: 2rem;
-    }
-
-    #about svg path#heart {
-      fill: #131515;
-    }
-
-    #careers {
-
-      color: var(--accent);
-      padding-bottom: 3.75rem;
-    }
-
-    #careers .container .box {
-      border: 1px solid var(--accent);
-      border-radius: 1.5rem;
-      padding: 4.5rem 1rem;
-      mix-blend-mode: lighten;
-    }
-
-    #careers h2 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 6.4px;
-      word-wrap: break-word;
-    }
-
-    #careers .link-container {
-      background-color: var(--accent);
-      border-radius: 0.75rem;
-    }
-
-    #careers a {
-      color: #000;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem 1.25rem;
-    }
-
-    #customers {
-      background-color: #131515;
-      color: var(--text-secondary);
-      padding: 2.5rem 1.5rem;
-    }
-
-    #customers h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 6.4px;
-      padding-bottom: 0;
-      text-align: center;
-    }
-
-    #customers h2 svg {
-      margin: -0.25rem 0.5rem;
-      height: 2rem;
-    }
-
-    #news {
-      position: relative;
-      overflow: hidden;
-    }
-
-    #news img {
-      position: absolute;
-      object-fit: cover;
-      width: 100%;
-      top: 0;
-      left: 0;
-      mix-blend-mode: screen;
-    }
-
-    #news .container {
-      padding: 9rem 0 9rem 1.3rem;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      width: 100%;
-    }
-
-    #news h2 {
-      color: #181d1c;
-      font-size: 3rem;
-      mix-blend-mode: darken;
-
-    }
-
-    #news .card-carousel {
-      display: flex;
-      gap: 1rem;
-      overflow: auto;
-      padding: 1rem 0;
-
-
-    }
-
-    #news .card-carousel::-webkit-scrollbar {
-      display: none;
-    }
-
-    #news .news-card {
-      width: 20rem;
-      height: 20rem;
-      background-color: #c7e4b6;
-      border: 1px solid #a8c896;
-      border-radius: 0.5rem;
-      flex: 0 0 auto;
-      mix-blend-mode: darken;
-    }
-
-    #contact {
-      padding: 8rem 0 6rem;
-    }
-
-    #contact .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #contact h2 {
-      font-size: 3rem;
-    }
-
-    #contact .link-container {
-      background-color: #181d1c;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-    }
-
-    #contact a {
-      color: white;
-      font-size: 1.125rem;
-      font-weight: 700;
-      letter-spacing: 3.6px;
-      text-decoration: none;
-    }
-
-    @media screen and (min-width: 390px) {
-        #news .container {
-          padding: 9rem 0 9rem 2rem;
-        }
-      }
-
-    @media (min-width: 768px) {
-      #hero {
-        padding: 6rem 0;
-        align-self: flex-start;
-      }
-      #hero .container {
-        flex-direction: row;
-        align-items: center;
-      }
-
-      #hero img {
-        width: 140%;
-        height: 140%;
-      }
-
-      #news .container {
-        padding: 9rem 0 9rem 4rem;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      #hero {
-        align-self: center;
-      }
-
-      #news .container {
-        padding: 9rem 0 9rem 2rem;
-      }
-    }
-  </style>
 </Layout>

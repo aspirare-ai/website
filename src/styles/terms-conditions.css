@@ -1,0 +1,28 @@
+main.tnc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tnc div.container section {
+  width: 100%;
+  align-items: flex-start;
+}
+
+.tnc section {
+  margin-bottom: 2rem;
+}
+
+.tnc h1,
+.tnc h2,
+.tnc p,
+.tnc ul,
+.tnc ol {
+  margin-bottom: 1rem;
+}
+
+.tnc ul,
+.tnc ol {
+  margin-left: 3rem;
+}

@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import '../styles/terms-conditions.css'
 ---
 
 <Layout title='Asiprare AI'>
-  <main>
+  <main class='tnc'>
     <div class='spacer'></div>
     <div class='container'>
       <section>
@@ -34,7 +35,7 @@ import Layout from '../layouts/Layout.astro'
           we do not own or control, or to individuals that we do not employ or
           manage.
         </p>
-        <h3>Table of contents</h3>
+        <h2>Table of contents</h2>
         <ol>
           <li>
             <a href='#collection-of-information'>Collection of information</a>
@@ -305,30 +306,4 @@ import Layout from '../layouts/Layout.astro'
       </section>
     </div>
   </main>
-  <style>
-    main {
-      flex: 1;
-    }
-    div.container section {
-      width: 100%;
-      align-items: flex-start;
-    }
-
-    section {
-      margin-bottom: 2rem;
-    }
-
-    h1,
-    h2,
-    p,
-    ul,
-    ol {
-      margin-bottom: 1rem;
-    }
-
-    ul,
-    ol {
-      margin-left: 3rem;
-    }
-  </style>
 </Layout>
