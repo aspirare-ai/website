@@ -72,6 +72,6 @@ export const news = {
 export const contact = {
   title: 'Contact',
   body: [
-    'For any inquiries about Aspirare and our products, please reach us at:'
+    'For any inquiries about Aspirare and our products, please reach us below:'
   ]
 }
