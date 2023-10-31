@@ -63,12 +63,8 @@ export const news = {
   title: 'News',
   newsCards: [
     {
-      title: 'News 1',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore'
-    },
-    {
-      title: 'News 2',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore'
+      title: 'Aspirare joins ventureLAB',
+      body: 'Aspirare has joined ventureLAB - a leading global founder community for hardware technology and enterprise software companies in Canada.'
     }
   ]
 }
