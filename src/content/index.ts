@@ -28,15 +28,15 @@ export const products = {
   productCards: [
     {
       title: 'Aspirare Gen 1',
-      body: placeholder // alphaBody
+      body: alphaBody // placeholder
     },
     {
       title: 'Aspirare Gen 2',
-      body: placeholder // betaBody
+      body: betaBody // placeholder
     },
     {
       title: 'Aspirare Edge',
-      body: placeholder //edgeBody
+      body: edgeBody // placeholder
     }
   ]
 }
