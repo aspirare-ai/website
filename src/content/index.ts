@@ -3,12 +3,12 @@ const placeholder = [
 ]
 
 const alphaBody = [
-  'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Alpha provides up to 2x higher performance at a 4x reduction in energy consumption compared to market standard solutions.',
+  'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Gen 1 provides up to 2x higher performance at ~10x reduction in energy consumption compared to market standard solutions.',
   'Aspirare’s driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
 ]
 
 const betaBody = [
-  'Our next generation AI accelerator presents significant improvements over our previous generation Aspirare Alpha. Innovative architecture improvements now provide comparable performance with flagship AI accelerators in the market with up to 6x reduction in energy consumption. Notably, the Aspirare Beta improves on the Aspirare Alpha performance by up to 5x with incremental improvements on energy consumption.'
+  'Our next generation AI accelerator presents significant improvements over Aspirare Gen 1. Innovative architecture improvements results in up to 6x improved performance in comparison with flagship AI accelerators in the market with up to 4x reduction in energy consumption. Notably, the Aspirare Gen 2 improves on the Aspirare Gen 1 performance by up to 30x with only a 5x increase in energy consumption.'
 ]
 
 const edgeBody = [
@@ -27,16 +27,16 @@ export const products = {
   title: 'Products',
   productCards: [
     {
-      title: 'Aspirare Alpha',
-      body: placeholder // alphaBody
+      title: 'Aspirare Gen 1',
+      body: alphaBody // placeholder
     },
     {
-      title: 'Aspirare Beta',
-      body: placeholder // betaBody
+      title: 'Aspirare Gen 2',
+      body: betaBody // placeholder
     },
     {
       title: 'Aspirare Edge',
-      body: placeholder //edgeBody
+      body: edgeBody // placeholder
     }
   ]
 }
@@ -63,12 +63,8 @@ export const news = {
   title: 'News',
   newsCards: [
     {
-      title: 'News 1',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore'
-    },
-    {
-      title: 'News 2',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore'
+      title: 'Aspirare joins ventureLAB',
+      body: 'Aspirare has joined ventureLAB - a leading global founder community for hardware technology and enterprise software companies in Canada.'
     }
   ]
 }
@@ -76,6 +72,6 @@ export const news = {
 export const contact = {
   title: 'Contact',
   body: [
-    'For any inquiries about Aspirare and our products, please reach us at:'
+    'For any inquiries about Aspirare and our products, please reach us below:'
   ]
 }
