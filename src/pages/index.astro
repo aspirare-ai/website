@@ -102,10 +102,12 @@ const { default: heartLeafHtml } = await import(
         <div class='card-carousel'>
           {
             news.newsCards.map((news) => (
-              <div class='news-card'>
-                <h3>{news.title}</h3>
-                <p>{news.body}</p>
-              </div>
+              <>
+                <div class='news-card'>
+                  <h3>{news.title}</h3>
+                  <p>{news.body}</p>
+                </div>
+              </>
             ))
           }
         </div>
