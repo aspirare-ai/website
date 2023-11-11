@@ -275,11 +275,54 @@ footer svg {
 @media screen and (min-width: 1200px) {
   .contact-banner a {
     font-size: 1.125rem;
-
     letter-spacing: 0.225rem;
   }
 
   .container {
     padding: 0 2rem;
+  }
+
+  #toggleMenu {
+    display: none;
+  }
+
+  #nav-bg {
+    display: none;
+  }
+
+  nav ul.container {
+    height: auto;
+    opacity: 1;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  nav li:first-of-type {
+    margin-top: 0;
+  }
+
+  nav li a {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 7.2px;
+  }
+
+  nav li a:hover {
+    color: var(--text-primary-60);
+  }
+
+  .container.navbar-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav[open='true'] {
+    background-color: transparent;
+  }
+
+  nav[open='true'] .navbar-container svg {
+    fill: var(--text-primary);
   }
 }
