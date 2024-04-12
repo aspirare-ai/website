@@ -19,7 +19,7 @@ export const hero = {
   title: 'Sustainably empowering the AI enabled future.',
   body: [
     'What will the AI enabled future look like? Current AI developments are constrained by two major factors - compute capability and the energy required to run current generation AI computing hardware.',
-    'Aspirare aims to empower the next generation of AI with our power efficient AI compute hardware. With edge and data center deployment applications, our products bring next-generation analog computing to the forefront of the AI future.'
+    'Aspirare aims to empower the next generation of AI with our power efficient AI compute hardware. With edge and data center deployment applications, our products bring next-generation computing to the forefront of the AI future.'
   ]
 }
 
@@ -44,14 +44,14 @@ export const products = {
 export const about = {
   title: 'about',
   body: [
-    'Aspirare is the Latin form of “to aspire” and “to breathe in”. Our mission is to breathe life into the next evolution of AI developments and applications. Our innovative analog approach removes the energy consumption and thermal constraints in place with current generation digital designs, empowering the potential of high-performance compute from data center to edge.'
+    'Aspirare is the Latin form of “to aspire” and “to breathe in”. Our mission is to breathe life into the next evolution of AI developments and applications. Our innovative approach removes the energy consumption and thermal constraints in place with current generation designs, empowering the potential of high-performance compute from data center to edge.'
   ]
 }
 
 export const careers = {
   title: 'Careers',
   body: [
-    'Aspirare is a rapidly growing Canadian startup building a world-class team to advance the development of our analog computing solution. If you’re interested in joining our ambition to empower the AI enabled future, please reach out to info@aspirare.io or view the current job postings at the link below.'
+    'Aspirare is a rapidly growing Canadian startup building a world-class team to advance the development of our vision of creating a sustainable AI computing solution. If you’re interested in joining our ambition to empower the AI enabled future, please reach out to us or view the current job postings at the link below.'
   ],
   positions: {
     text: 'See open positions',
