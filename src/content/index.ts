@@ -65,6 +65,14 @@ export const news = {
     {
       title: 'Aspirare joins ventureLAB',
       body: 'Aspirare has joined ventureLAB - a leading global founder community for hardware technology and enterprise software companies in Canada.'
+    },
+    {
+      title: 'Aspirare files patents',
+      body: 'Aspirare has filed patents for its innovative analog design in AI semiconductors for data center use.'
+    },
+    {
+      title: 'Aspirare completes prototype chip',
+      body: 'Aspirare successfully taped out its first analog multiply engine chip to address AI workloads.'
     }
   ]
 }
