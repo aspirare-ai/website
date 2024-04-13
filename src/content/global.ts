@@ -1,5 +1,5 @@
 export const email = 'josh@aspirare.io'
-export const contactSales = 'contact aspirare sales'
+export const contactSales = 'contact aspirare semi sales'
 export const navLinks = [
   { url: '/#products', text: 'products' },
   { url: '/#about', text: 'about' },
