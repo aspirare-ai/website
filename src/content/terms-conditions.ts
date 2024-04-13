@@ -137,9 +137,9 @@ export const sections = [
     title: 'Contacting us',
     body: [
       'If you have any questions, concerns, or complaints regarding this Policy, the information we hold about you, or if you wish to exercise your rights, we encourage you to contact us using the details below:',
-      { url: 'mailto:info@aspirare.io', text: 'info@aspirare.io' },
+      { url: 'mailto:josh@aspirare.io', text: 'josh@aspirare.io' },
       'We will attempt to resolve complaints and disputes and make every reasonable effort to honor your wish to exercise your rights as quickly as possible and in any event, within the timescales provided by applicable data protection laws.',
-      'This document was last updated on October 24, 2023'
+      'This document was last updated on April 13, 2024'
     ]
   }
 ]
