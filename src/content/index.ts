@@ -4,7 +4,7 @@ const placeholder = [
 
 const alphaBody = [
   'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Gen 1 provides up to 2x higher performance at ~10x reduction in energy consumption compared to market standard solutions.',
-  'Aspirare's driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
+  'Aspirare driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
 ]
 
 const betaBody = [
@@ -12,7 +12,7 @@ const betaBody = [
 ]
 
 const edgeBody = [
-  'Aspirare's analog computing design is uniquely suited to enable data center quality AI computing directly at the edge. Aspirare Edge can be directly integrated on edge, wearables, mobile and IoT devices empowering AI applications where on-device low-latency processing is critical. Our analog architecture is uniquely suited for small form factor applications, and our reduced energy consumption and thermal dissipation requirements can reduce the size of supporting battery and cooling requirements.'
+  'Aspirare analog computing design is uniquely suited to enable data center quality AI computing directly at the edge. Aspirare Edge can be directly integrated on edge, wearables, mobile and IoT devices empowering AI applications where on-device low-latency processing is critical. Our analog architecture is uniquely suited for small form factor applications, and our reduced energy consumption and thermal dissipation requirements can reduce the size of supporting battery and cooling requirements.'
 ]
 
 export const hero = {
