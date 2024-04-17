@@ -2,16 +2,16 @@ const placeholder = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
 ]
 
-const alphaBody = [
+const aiStrategyPlanning = [
   'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Gen 1 provides up to 2x higher performance at ~10x reduction in energy consumption compared to market standard solutions.',
   'Aspirare driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
 ]
 
-const betaBody = [
+const aiGovernance = [
   'Our next generation AI accelerator presents significant improvements over Aspirare Gen 1. Innovative architecture improvements results in up to 6x improved performance in comparison with flagship AI accelerators in the market with up to 4x reduction in energy consumption. Notably, the Aspirare Gen 2 improves on the Aspirare Gen 1 performance by up to 30x with only a 5x increase in energy consumption.'
 ]
 
-const edgeBody = [
+const aiExecution = [
   'Aspirare analog computing design is uniquely suited to enable data center quality AI computing directly at the edge. Aspirare Edge can be directly integrated on edge, wearables, mobile and IoT devices empowering AI applications where on-device low-latency processing is critical. Our analog architecture is uniquely suited for small form factor applications, and our reduced energy consumption and thermal dissipation requirements can reduce the size of supporting battery and cooling requirements.'
 ]
 
@@ -24,19 +24,19 @@ export const hero = {
 }
 
 export const products = {
-  title: 'Products',
+  title: 'Services',
   productCards: [
     {
-      title: 'Aspirare Gen 1',
-      body: alphaBody // placeholder
+      title: 'AI Strategy & Planning',
+      body: aiStrategyPlanning // placeholder
     },
     {
-      title: 'Aspirare Gen 2',
-      body: betaBody // placeholder
+      title: 'AI Governance Program',
+      body: aiGovernance // placeholder
     },
     {
-      title: 'Aspirare Edge',
-      body: edgeBody // placeholder
+      title: 'AI Implementation & Operations',
+      body: aiExecution // placeholder
     }
   ]
 }
