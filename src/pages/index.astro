@@ -7,7 +7,7 @@ import deepMindImage from '../assets/images/deepmind.png'
 import textureImage from '../assets/images/texture.jpeg'
 import newsTexture from '../assets/images/news-texture.png'
 
-import { hero, products, about, careers, news, contact } from '../content/index'
+import { hero, services, about, careers, news, contact } from '../content/index'
 import { email } from '../content/global'
 import '../styles/index.css'
 
@@ -32,12 +32,12 @@ const { default: heartLeafHtml } = await import(
           {hero.body.map((text) => <p>{text}</p>)}
         </div>
       </section>
-      <section id='products'>
+      <section id='services'>
         <div class='container'>
-          <h2>{products.title}</h2>
+          <h2>{services.title}</h2>
           <ul>
             {
-              products.productCards.map((card) => (
+              services.serviceCards.map((card) => (
                 <Card
                   title={card.title}
                   body={card.body}
