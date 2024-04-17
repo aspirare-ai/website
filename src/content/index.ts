@@ -23,7 +23,7 @@ export const hero = {
   ]
 }
 
-export const products = {
+export const services = {
   title: 'Services',
   productCards: [
     {
