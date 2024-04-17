@@ -25,7 +25,7 @@ export const hero = {
 
 export const services = {
   title: 'Services',
-  productCards: [
+  serviceCards: [
     {
       title: 'AI Strategy & Planning',
       body: aiStrategyPlanning // placeholder
