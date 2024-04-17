@@ -8,12 +8,12 @@ const aiStrategyPlanning = [
 ]
 
 const aiGovernance = [
-  'We help enterprises develop the right AI governance program that meets their needs. Artificial intelligence (AI) governance refers to the guardrails that ensure AI tools and systems are and remain safe and ethical. It establishes the frameworks, rules and standards that direct AI research, development and application to ensure safety, fairness and respect for human rights.'
+  'We help enterprises develop the right AI governance program that meets their needs. Artificial intelligence (AI) governance refers to the guardrails that ensure AI tools and systems are and remain safe and ethical. It establishes the frameworks, rules and standards that direct AI research, development and application to ensure safety, fairness and respect for human rights.',
   'Governance aims to establish the necessary oversight to align AI behaviors with ethical standards and societal expectations and to safeguard against potential adverse impacts.'
 ]
 
 const aiExecution = [
-  'We help enterprises with the implementation and execution of AI pilots and operational rollouts. Artificial intelligence (AI) is the transformative technology of our times. It helps all of us make our businesses faster, stronger and more effective.'
+  'We help enterprises with the implementation and execution of AI pilots and operational rollouts. Artificial intelligence (AI) is the transformative technology of our times. It helps all of us make our businesses faster, stronger and more effective.',
   'With the right AI tools, you can build a competitive advantage in customer service, boost AI-powered productivity and modernize applications across industries, including financial services, healthcare, supply chain and more.'
 ]
 
