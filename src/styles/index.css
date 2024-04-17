@@ -81,12 +81,12 @@ section h2 {
   padding-bottom: 1.5rem;
 }
 
-#products {
+#services {
   mix-blend-mode: multiply;
 
 }
 
-#products ul {
+#services ul {
   margin: 1.75rem 0 3.5rem;
   display: flex;
   flex-direction: column;
