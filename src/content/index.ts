@@ -3,16 +3,18 @@ const placeholder = [
 ]
 
 const aiStrategyPlanning = [
-  'Our first generation AI accelerator brings our innovative analog compute cores to data center applications. The Aspirare Gen 1 provides up to 2x higher performance at ~10x reduction in energy consumption compared to market standard solutions.',
-  'Aspirare driver and software stack is plug and play with the most common ML frameworks, ensuring AI/ML developers and data scientists can leverage Aspirare compute with minimal code changes and performance impacts.'
+  'We help enterprises develop an artificial intelligence (AI) strategy that aligns and supports the broader goals of the business. Depending on the organization’s goals, the AI strategy might outline the steps to effectively use AI to extract deeper insights from data, enhance efficiency, build a better supply chain or ecosystem and/or improve talent and customer experiences.',
+  'As artificial intelligence continues to impact almost every industry, a well-crafted AI strategy is imperative. It can help organizations unlock their potential, gain a competitive advantage and achieve sustainable success in the ever-changing digital era.'
 ]
 
 const aiGovernance = [
-  'Our next generation AI accelerator presents significant improvements over Aspirare Gen 1. Innovative architecture improvements results in up to 6x improved performance in comparison with flagship AI accelerators in the market with up to 4x reduction in energy consumption. Notably, the Aspirare Gen 2 improves on the Aspirare Gen 1 performance by up to 30x with only a 5x increase in energy consumption.'
+  'We help enterprises develop the right AI governance program that meets their needs. Artificial intelligence (AI) governance refers to the guardrails that ensure AI tools and systems are and remain safe and ethical. It establishes the frameworks, rules and standards that direct AI research, development and application to ensure safety, fairness and respect for human rights.'
+  'Governance aims to establish the necessary oversight to align AI behaviors with ethical standards and societal expectations and to safeguard against potential adverse impacts.'
 ]
 
 const aiExecution = [
-  'Aspirare analog computing design is uniquely suited to enable data center quality AI computing directly at the edge. Aspirare Edge can be directly integrated on edge, wearables, mobile and IoT devices empowering AI applications where on-device low-latency processing is critical. Our analog architecture is uniquely suited for small form factor applications, and our reduced energy consumption and thermal dissipation requirements can reduce the size of supporting battery and cooling requirements.'
+  'We help enterprises with the implementation and execution of AI pilots and operational rollouts. Artificial intelligence (AI) is the transformative technology of our times. It helps all of us make our businesses faster, stronger and more effective.'
+  'With the right AI tools, you can build a competitive advantage in customer service, boost AI-powered productivity and modernize applications across industries, including financial services, healthcare, supply chain and more.'
 ]
 
 export const hero = {
