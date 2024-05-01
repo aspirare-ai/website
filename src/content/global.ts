@@ -1,4 +1,4 @@
-export const email = 'josh@aspirare.io'
+export const email = 'joshua.chan@aspirare.ai'
 export const contactSales = 'contact aspirare now'
 export const navLinks = [
   { url: '/#services', text: 'services' },
