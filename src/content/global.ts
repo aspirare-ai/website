@@ -8,4 +8,4 @@ export const navLinks = [
   { url: '/#contact', text: 'contact' }
 ]
 export const toc = { url: '/terms-conditions', text: 'Terms & Conditions' }
-export const copyright = 'copyright aspirare 2024'
+export const copyright = 'copyright aspirare 2025'
