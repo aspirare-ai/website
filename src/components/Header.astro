@@ -1,6 +1,8 @@
 ---
 import { siteContent } from '../content/site'
-import { aspirareLogoHtml } from '../assets/svg/aspirareLogo.svg?raw'
+const { default: aspirareLogoHtml } = await import(
+  `../assets/svg/aspirareLogo.svg?raw`
+)
 ---
 
 <header class='header'>
