@@ -1,5 +1,6 @@
 ---
 import { siteContent } from '../content/site'
+import { aspirareLogoHtml } from '../assets/svg/aspirareLogo.svg?raw'
 ---
 
 <header class='header'>
@@ -8,7 +9,7 @@ import { siteContent } from '../content/site'
       <div class='nav-content'>
         <div class='logo'>
           <a href='/' class='logo-link'>
-            <span class='logo-icon'>🧠</span>
+            <Fragment set:html={aspirareLogoHtml} />
             <span class='logo-text'>{siteContent.company.name}</span>
           </a>
         </div>

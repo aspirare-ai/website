@@ -1,9 +1,9 @@
 export const siteContent = {
   company: {
-    name: 'Nexus AI Consulting',
+    name: 'Aspiare',
     tagline: 'Transforming Enterprise Through Intelligent Automation',
     description:
-      'We partner with Fortune 500 companies to implement cutting-edge AI solutions that drive operational efficiency, reduce costs, and unlock new revenue streams.'
+      'We partner with companies to implement cutting-edge AI solutions that drive operational efficiency, reduce costs, and unlock new revenue streams.'
   },
   hero: {
     headline: 'Transform Your Enterprise with AI',
