@@ -1,144 +1,199 @@
 ---
-import { Image } from 'astro:assets'
-import textureBg from '../assets/images/hero-bg.png'
-import '../styles/layout.css'
-
-import {
-  email,
-  contactSales,
-  navLinks,
-  toc,
-  copyright
-} from '../content/global'
-import { isTypeOnlyExportDeclaration } from 'typescript'
-
-const { default: rightArrowHtml } = await import(
-  `../assets/svg/right-arrow.svg?raw`
-)
-const { default: menuButtonHtml } = await import(`../assets/svg/menu.svg?raw`)
-const { default: aspirareLogoHtml } = await import(
-  `../assets/svg/aspirareLogo.svg?raw`
-)
-
-interface Props {
-  title: string
+export interface Props {
+  title?: string
+  description?: string
 }
 
-const { title } = Astro.props
+const {
+  title = 'Nexus AI Consulting - Enterprise AI Transformation',
+  description = 'Strategic AI implementation for Fortune 500 companies. Drive efficiency, reduce costs, and unlock revenue with our proven AI transformation methodology.'
+} = Astro.props
 ---
 
 <!doctype html>
 <html lang='en'>
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNHTPB8227"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-LNHTPB8227');
-    </script>
     <meta charset='UTF-8' />
-    <meta name='description' content='Aspirare' />
-    <meta name='viewport' content='width=device-width' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <meta name='description' content={description} />
+    <title>{title}</title>
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href='https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Playfair+Display:wght@800&family=Roboto+Mono:wght@400;700&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
       rel='stylesheet'
     />
-    <meta name='generator' content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body>
-    <header>
-      <div class='contact-banner'>
-        <div>
-          <a href={`mailto:${email}`}>{contactSales}</a>
-          <Fragment set:html={rightArrowHtml} />
-        </div>
-      </div>
-
-      <nav>
-        <Image id='nav-bg' src={textureBg} aria-hidden alt='Texture image' />
-        <div class='container navbar-container'>
-          <div class='navbar-head'>
-            <a href='/#' title='Aspirare'>
-              <Fragment set:html={aspirareLogoHtml} />
-            </a>
-
-            <button
-              id='toggleMenu'
-              class='menuButton'
-              title='Open Navigation Menu'
-              aria-expanded='false'
-            >
-              <Fragment set:html={menuButtonHtml} />
-            </button>
-          </div>
-          <ul class='container'>
-            {
-              navLinks.map((link) => (
-                <li>
-                  <a href={link.url}>{link.text}</a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </nav>
-    </header>
-
     <slot />
-    <footer>
-      <div class='container'>
-        <Fragment set:html={aspirareLogoHtml} />
-        <a href={toc.url}>{toc.text}</a>
-        <div>{copyright}</div>
-      </div>
-    </footer>
-
-    <script>
-      const toggleMenuButton = document.querySelector('#toggleMenu')
-
-      function toggleMenu() {
-        const expanded =
-          toggleMenuButton?.getAttribute('aria-expanded') === 'true' || false
-        const newExpandedState = !expanded
-        toggleMenuButton?.setAttribute('aria-expanded', `${newExpandedState}`)
-
-        const nav = document.querySelector('nav')
-        if (nav) {
-          if (nav.getAttribute('open')) {
-            nav.removeAttribute('open')
-          } else {
-            nav.setAttribute('open', 'true')
-          }
-        }
-
-        const menu = toggleMenuButton?.nextElementSibling
-        if (menu) {
-          if (menu.getAttribute('hidden')) {
-            menu.removeAttribute('hidden')
-          } else {
-            menu.setAttribute('hidden', 'true')
-          }
-        }
-
-        const menuLinks = document.querySelectorAll('nav a')
-
-        menuLinks.forEach((link) => {
-          if (newExpandedState) {
-            link.addEventListener('click', toggleMenu)
-          } else {
-            link.removeEventListener('click', toggleMenu)
-          }
-        })
-      }
-
-      toggleMenuButton?.addEventListener('click', toggleMenu)
-    </script>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --color-primary: #1e40af;
+    --color-primary-light: #3b82f6;
+    --color-accent: #0d9488;
+    --color-accent-light: #14b8a6;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-600: #4b5563;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+    --color-white: #ffffff;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md:
+      0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg:
+      0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl:
+      0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    line-height: 1.6;
+    color: var(--color-gray-800);
+    background-color: var(--color-white);
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--color-gray-900);
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.875rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    line-height: 1.75;
+    color: var(--color-gray-600);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+  }
+
+  .section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .section-alt {
+    background: var(--color-gray-50);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    .container {
+      padding: 0 var(--spacing-sm);
+    }
+    .section {
+      padding: var(--spacing-xl) 0;
+    }
+  }
+</style>

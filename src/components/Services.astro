@@ -1,0 +1,145 @@
+---
+import { siteContent } from '../content/site'
+const { services } = siteContent
+---
+
+<section id='services' class='section'>
+  <div class='container'>
+    <div class='section-header'>
+      <h2 class='section-title fade-in'>{services.title}</h2>
+      <p class='section-subtitle fade-in'>{services.subtitle}</p>
+    </div>
+
+    <div class='services-grid'>
+      {
+        services.offerings.map((service, index) => (
+          <div
+            class='service-card fade-in'
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <div class='service-icon'>{service.icon}</div>
+            <h3 class='service-title'>{service.title}</h3>
+            <p class='service-description'>{service.description}</p>
+            <ul class='service-features'>
+              {service.features.map((feature) => (
+                <li class='service-feature'>
+                  <span class='feature-check'>✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .service-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-gray-200);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      var(--color-accent)
+    );
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+
+  .service-title {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gray-900);
+  }
+
+  .service-description {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+  }
+
+  .service-features {
+    list-style: none;
+  }
+
+  .service-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+  }
+
+  .feature-check {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .service-card {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

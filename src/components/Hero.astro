@@ -1,0 +1,193 @@
+---
+import { siteContent } from '../content/site'
+const { hero } = siteContent
+---
+
+<section class='hero'>
+  <div class='hero-background'>
+    <div class='hero-gradient'></div>
+    <div class='hero-pattern'></div>
+  </div>
+
+  <div class='container'>
+    <div class='hero-content'>
+      <div class='hero-text'>
+        <h1 class='hero-headline fade-in'>{hero.headline}</h1>
+        <p class='hero-subheadline fade-in'>{hero.subheadline}</p>
+
+        <div class='hero-cta fade-in'>
+          <a href='#contact' class='btn btn-primary'>{hero.cta.primary}</a>
+          <a href='#case-studies' class='btn btn-secondary'
+            >{hero.cta.secondary}</a
+          >
+        </div>
+      </div>
+
+      <div class='hero-metrics fade-in'>
+        {
+          hero.metrics.map((metric) => (
+            <div class='metric'>
+              <div class='metric-value'>{metric.value}</div>
+              <div class='metric-label'>{metric.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-accent) 100%
+    );
+    opacity: 0.05;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(
+        circle at 25% 25%,
+        var(--color-primary) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        var(--color-accent) 1px,
+        transparent 1px
+      );
+    background-size: 60px 60px;
+    opacity: 0.1;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-headline {
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-accent)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subheadline {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .metric {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+  }
+
+  .metric:hover {
+    transform: translateY(-5px);
+  }
+
+  .metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 80vh;
+      padding-top: 60px;
+    }
+
+    .hero-headline {
+      font-size: 2.5rem;
+    }
+
+    .hero-subheadline {
+      font-size: 1.125rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-metrics {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-sm);
+    }
+
+    .metric {
+      padding: var(--spacing-sm);
+    }
+
+    .metric-value {
+      font-size: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import { Image } from 'astro:assets'
+import heroBGImage from '../assets/images/hero-bg.png'
+import deepMindImage from '../assets/images/deepmind.png'
+import textureImage from '../assets/images/texture.jpeg'
+import newsTexture from '../assets/images/news-texture.png'
+
+import { hero, services, about, careers, news, contact } from '../content/index'
+import { email } from '../content/global'
+import '../styles/index.css'
+
+const { default: heartLeafHtml } = await import(
+  `../assets/svg/heart-leaf.svg?raw`
+)
+---
+
+<Layout title='Aspirare'>
+  <main>
+    <div class='spacer'></div>
+    <div class='hero-container'>
+      <div class='hero-bg-container'>
+        <Image src={heroBGImage} aria-hidden alt='Texture image' />
+      </div>
+      <section id='hero'>
+        <div class='container hero-top'>
+          <h1>{hero.title}</h1>
+          <Image src={deepMindImage} aria-hidden alt='Brain Image' />
+        </div>
+        <div class='container content'>
+          {hero.body.map((text) => <p>{text}</p>)}
+        </div>
+      </section>
+      <section id='services'>
+        <div class='container'>
+          <h2>{services.title}</h2>
+          <ul>
+            {
+              services.serviceCards.map((card) => (
+                <Card
+                  title={card.title}
+                  body={card.body}
+                  color='var(--accent)'
+                />
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+    </div>
+    <div class='company-container'>
+      <Image id='texture' src={textureImage} aria-hidden alt='Brain Image' />
+      <section id='about'>
+        <div class='container'>
+          <h2>{about.title}</h2>
+          {about.body.map((text) => <p>{text}</p>)}
+          <div class='icon-container'>
+            <Fragment set:html={heartLeafHtml} />
+          </div>
+        </div>
+      </section>
+      <section id='careers'>
+        <div class='container'>
+          <div class='box'>
+            <h2>{careers.title}</h2>
+            {careers.body.map((text) => <p>{text}</p>)}
+            <div class='link-container'>
+              <a href={careers.positions.url}>{careers.positions.text}</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section id='customers'>
+      <div class='container'>
+        <h2>
+          <span>we</span>
+          <svg
+            width='40'
+            height='40'
+            viewBox='0 0 40 40'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <g id='heart-solid 1'>
+              <path
+                id='Vector'
+                d='M3.71875 23.4687L17.8359 36.6484C18.4219 37.1952 19.1953 37.4999 20 37.4999C20.8047 37.4999 21.5781 37.1952 22.1641 36.6484L36.2812 23.4687C38.6562 21.2577 40 18.1562 40 14.914V14.4609C40 8.99993 36.0547 4.34368 30.6719 3.44524C27.1094 2.85149 23.4844 4.01556 20.9375 6.56243L20 7.49993L19.0625 6.56243C16.5156 4.01556 12.8906 2.85149 9.32812 3.44524C3.94531 4.34368 0 8.99993 0 14.4609V14.914C0 18.1562 1.34375 21.2577 3.71875 23.4687Z'
+                fill='#52D30A'></path>
+            </g>
+          </svg>
+          <span>our customers</span>
+        </h2>
+      </div>
+    </section>
+
+    <section id='news'>
+      <Image src={newsTexture} alt='news texture' aria-hidden />
+      <div class='container'>
+        <h2>{news.title}</h2>
+        <div class='card-carousel'>
+          {
+            news.newsCards.map((news) => (
+              <>
+                <div class='news-card'>
+                  <h3>{news.title}</h3>
+                  <p>{news.body}</p>
+                </div>
+              </>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section id='contact'>
+      <div class='container'>
+        <h2>{contact.title}</h2>
+        {contact.body.map((text) => <p>{text}</p>)}
+        <div class='link-container'>
+          <a href={`mailto:${email}`}>Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

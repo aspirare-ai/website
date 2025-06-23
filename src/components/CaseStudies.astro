@@ -1,0 +1,169 @@
+---
+import { siteContent } from '../content/site'
+const { caseStudies } = siteContent
+---
+
+<section id='case-studies' class='section'>
+  <div class='container'>
+    <div class='section-header'>
+      <h2 class='section-title fade-in'>{caseStudies.title}</h2>
+      <p class='section-subtitle fade-in'>{caseStudies.subtitle}</p>
+    </div>
+
+    <div class='case-studies-grid'>
+      {
+        caseStudies.studies.map((study, index) => (
+          <div
+            class='case-study-card fade-in'
+            style={`animation-delay: ${index * 0.2}s`}
+          >
+            <div class='study-header'>
+              <div class='study-company'>{study.company}</div>
+              <div class='study-industry'>{study.industry}</div>
+            </div>
+
+            <div class='study-content'>
+              <div class='study-challenge'>
+                <h4 class='study-label'>Challenge</h4>
+                <p>{study.challenge}</p>
+              </div>
+
+              <div class='study-solution'>
+                <h4 class='study-label'>Solution</h4>
+                <p>{study.solution}</p>
+              </div>
+
+              <div class='study-results'>
+                <h4 class='study-label'>Results</h4>
+                <ul class='results-list'>
+                  {study.results.map((result) => (
+                    <li class='result-item'>
+                      <span class='result-icon'>📈</span>
+                      {result}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .case-study-card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .case-study-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .study-header {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-accent)
+    );
+    padding: var(--spacing-lg);
+    color: var(--color-white);
+  }
+
+  .study-company {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .study-industry {
+    opacity: 0.9;
+    font-size: 0.875rem;
+  }
+
+  .study-content {
+    padding: var(--spacing-lg);
+  }
+
+  .study-challenge,
+  .study-solution,
+  .study-results {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .study-results {
+    margin-bottom: 0;
+  }
+
+  .study-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .study-content p {
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .results-list {
+    list-style: none;
+  }
+
+  .result-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--color-gray-700);
+  }
+
+  .result-icon {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .case-studies-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .study-header,
+    .study-content {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

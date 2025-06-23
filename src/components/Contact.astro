@@ -1,0 +1,319 @@
+---
+import { siteContent } from '../content/site'
+const { contact } = siteContent
+---
+
+<section id='contact' class='section section-alt'>
+  <div class='container'>
+    <div class='section-header'>
+      <h2 class='section-title fade-in'>{contact.title}</h2>
+      <p class='section-subtitle fade-in'>{contact.subtitle}</p>
+    </div>
+
+    <div class='contact-content'>
+      <div class='contact-form-container'>
+        <form class='contact-form fade-in'>
+          <div class='form-grid'>
+            <div class='form-group'>
+              <label for='name' class='form-label'>Full Name *</label>
+              <input
+                type='text'
+                id='name'
+                name='name'
+                class='form-input'
+                required
+              />
+            </div>
+
+            <div class='form-group'>
+              <label for='email' class='form-label'>Business Email *</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                class='form-input'
+                required
+              />
+            </div>
+
+            <div class='form-group'>
+              <label for='company' class='form-label'>Company *</label>
+              <input
+                type='text'
+                id='company'
+                name='company'
+                class='form-input'
+                required
+              />
+            </div>
+
+            <div class='form-group'>
+              <label for='role' class='form-label'>Your Role *</label>
+              <input
+                type='text'
+                id='role'
+                name='role'
+                class='form-input'
+                required
+              />
+            </div>
+
+            <div class='form-group'>
+              <label for='budget' class='form-label'>Project Budget Range</label
+              >
+              <select id='budget' name='budget' class='form-select'>
+                <option value=''>Select budget range</option>
+                <option value='< $100K'> &lt; $100K</option>
+                <option value='$100K - $500K'>$100K - $500K</option>
+                <option value='$500K - $1M'>$500K - $1M</option>
+                <option value='$1M - $5M'>$1M - $5M</option>
+                <option value='$5M+'>$5M+</option>
+              </select>
+            </div>
+
+            <div class='form-group'>
+              <label for='timeline' class='form-label'>Desired Timeline</label>
+              <select id='timeline' name='timeline' class='form-select'>
+                <option value=''>Select timeline</option>
+                <option value='Immediate'>Immediate</option>
+                <option value='Within 3 months'>Within 3 months</option>
+                <option value='3-6 months'>3-6 months</option>
+                <option value='6-12 months'>6-12 months</option>
+                <option value='Planning phase'>Planning phase</option>
+              </select>
+            </div>
+          </div>
+
+          <div class='form-group'>
+            <label for='message' class='form-label'>Project Details *</label>
+            <textarea
+              id='message'
+              name='message'
+              class='form-textarea'
+              rows='4'
+              placeholder='Tell us about your AI transformation goals and challenges...'
+              required></textarea>
+          </div>
+
+          <button type='submit' class='btn btn-primary form-submit'>
+            Schedule Consultation
+          </button>
+        </form>
+      </div>
+
+      <div class='contact-info fade-in'>
+        <div class='info-card'>
+          <h3 class='info-title'>Get in Touch</h3>
+          <p class='info-description'>
+            Ready to transform your enterprise with AI? Our team of experts is
+            standing by to discuss your specific needs.
+          </p>
+
+          <div class='info-items'>
+            <div class='info-item'>
+              <span class='info-icon'>📍</span>
+              <div class='info-content'>
+                <div class='info-label'>Address</div>
+                <div class='info-value'>{contact.info.address}</div>
+              </div>
+            </div>
+
+            <div class='info-item'>
+              <span class='info-icon'>📞</span>
+              <div class='info-content'>
+                <div class='info-label'>Phone</div>
+                <div class='info-value'>{contact.info.phone}</div>
+              </div>
+            </div>
+
+            <div class='info-item'>
+              <span class='info-icon'>✉️</span>
+              <div class='info-content'>
+                <div class='info-label'>Email</div>
+                <div class='info-value'>{contact.info.email}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+  }
+
+  .contact-form {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    background: var(--color-white);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 1.1rem;
+  }
+
+  .contact-info {
+    position: sticky;
+    top: 100px;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .info-title {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gray-900);
+  }
+
+  .info-description {
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .info-item {
+    display: flex;
+    align-items: start;
+    gap: var(--spacing-sm);
+  }
+
+  .info-icon {
+    font-size: 1.25rem;
+    margin-top: 2px;
+  }
+
+  .info-label {
+    font-weight: 500;
+    color: var(--color-gray-900);
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+  }
+
+  .info-value {
+    color: var(--color-gray-600);
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+    }
+
+    .contact-form,
+    .info-card {
+      padding: var(--spacing-md);
+    }
+
+    .contact-info {
+      position: static;
+    }
+  }
+</style>
+
+<script>
+  // Form submission handler
+  document
+    .querySelector('.contact-form')
+    ?.addEventListener('submit', function (e) {
+      e.preventDefault()
+
+      // Get form data
+      const formData = new FormData(this as HTMLFormElement)
+      const data = Object.fromEntries(formData)
+
+      // Here you would typically send the data to your backend
+      console.log('Form submitted:', data)
+
+      // Show success message (in a real implementation, you'd want better UX)
+      alert("Thank you for your interest! We'll be in touch within 24 hours.")
+
+      // Reset form
+      ;(this as HTMLFormElement).reset()
+    })
+</script>
