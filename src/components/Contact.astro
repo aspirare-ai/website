@@ -80,29 +80,31 @@ const { contact } = siteContent
   }
 
   .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-2xl);
-    align-items: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .info-card,
-  .area-card {
+  .contact-info {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .info-card {
     background: var(--color-white);
     padding: var(--spacing-xl);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--color-gray-200);
+    text-align: center;
   }
 
-  .info-title,
-  .area-title {
+  .info-title {
     margin-bottom: var(--spacing-sm);
     color: var(--color-gray-900);
   }
 
-  .info-description,
-  .area-description {
+  .info-description {
     margin-bottom: var(--spacing-xl);
     line-height: 1.6;
   }
@@ -112,6 +114,7 @@ const { contact } = siteContent
     flex-direction: column;
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
+    text-align: left;
   }
 
   .info-item {
@@ -141,48 +144,23 @@ const { contact } = siteContent
   .cta-buttons {
     display: flex;
     gap: var(--spacing-sm);
+    justify-content: center;
     flex-wrap: wrap;
   }
 
-  .maps-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-
-  .map-section {
-    text-align: center;
-  }
-
-  .map-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-gray-800);
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .country-map {
-    width: 100%;
-    height: auto;
-    max-width: 200px;
-    background: var(--color-gray-50);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-sm);
-  }
-
   @media (max-width: 768px) {
-    .contact-content {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-xl);
-    }
-
-    .info-card,
-    .area-card {
+    .info-card {
       padding: var(--spacing-md);
     }
 
     .cta-buttons {
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 200px;
     }
   }
 </style>

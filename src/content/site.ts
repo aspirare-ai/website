@@ -179,9 +179,10 @@ export const siteContent = {
       ]
     },
     info: {
-      address: '1 World Trade Center, Suite 8500, New York, NY 10007',
-      phone: '+1 (555) 123-4567',
-      email: 'hello@nexusai.consulting'
+      address:
+        'We have presence in Vancouver, BC, Canada and Ottawa, ON, Canada',
+      phone: '+1 (123) 456-7890',
+      email: 'joshua.chan@aspirare.ai'
     }
   }
 }
