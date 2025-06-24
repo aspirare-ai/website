@@ -1,6 +1,6 @@
 export const siteContent = {
   company: {
-    name: 'Aspiare',
+    name: 'Aspirare',
     tagline: 'Transforming Enterprise Through Intelligent Automation',
     description:
       'We partner with companies to implement cutting-edge AI solutions that drive operational efficiency, reduce costs, and unlock new revenue streams.'
