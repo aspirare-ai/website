@@ -1,7 +1,7 @@
 export const siteContent = {
   company: {
     name: 'aspirare',
-    legalName: 'Aspirare Corp.',
+    legalName: 'Aspirare Corp',
     tagline: 'Transforming Enterprise Through Intelligent Automation',
     description:
       'We partner with companies to implement cutting-edge AI solutions that drive operational efficiency, reduce costs, and unlock new revenue streams.'
@@ -15,10 +15,11 @@ export const siteContent = {
       secondary: 'View Case Studies'
     },
     metrics: [
-      { value: '500+', label: 'AI Projects Delivered' },
-      { value: '85%', label: 'Average Cost Reduction' },
-      { value: '$2.3B', label: 'Client Value Generated' },
-      { value: '99%', label: 'Client Retention Rate' }
+      { value: '7', label: 'AI Projects Delivered' },
+      { value: '80%', label: 'Average Cost Reduction' },
+      { value: '$50M', label: 'Client Value Generated' },
+      { value: '100%', label: 'Client Retention Rate' },
+      { value: '2-3', label: 'Beginning to End Deployment' }
     ]
   },
   services: {
@@ -27,12 +28,12 @@ export const siteContent = {
     offerings: [
       {
         icon: '🧠',
-        title: 'AI Strategy & Roadmap',
+        title: 'AI Strategy & Planning',
         description:
           'Comprehensive AI assessment and strategic planning tailored to your industry and business objectives.',
         features: [
           'Market Analysis',
-          'Technology Audit',
+          'Business & Technology Audit',
           'ROI Modeling',
           'Implementation Timeline'
         ]
@@ -60,37 +61,24 @@ export const siteContent = {
           'ML Model Development',
           'Data Pipeline Architecture'
         ]
-      },
-      {
-        icon: '🔒',
-        title: 'Enterprise Integration',
-        description:
-          'Secure, scalable AI deployment that integrates seamlessly with your existing infrastructure.',
-        features: [
-          'API Development',
-          'Cloud Migration',
-          'Security Compliance',
-          'Change Management'
-        ]
       }
     ]
   },
   about: {
-    title: 'Leading AI Transformation Since 2018',
+    title: 'Leading AI Transformation for Industry Veterans',
     description:
-      'Our team of AI specialists, data scientists, and enterprise architects has successfully guided over 200 Fortune 500 companies through their digital transformation journey.',
+      'Our team of AI specialists, data scientists, and enterprise architects has successfully guided enterprise companies through their digital transformation journey.',
     stats: [
-      { number: '200+', label: 'Enterprise Clients' },
-      { number: '50+', label: 'AI Experts' },
-      { number: '15+', label: 'Industries Served' },
-      { number: '6', label: 'Years Experience' }
+      { number: '5+', label: 'Enterprise Clients' },
+      { number: '10+', label: 'Technical Experts' },
+      { number: '5+', label: 'Industries Served' },
+      { number: '25+', label: 'Years Experience' }
     ],
     expertise: [
+      'Large Language Models Development',
       'Machine Learning & Deep Learning',
       'Natural Language Processing',
-      'Computer Vision',
       'Robotic Process Automation',
-      'Cloud AI Platforms (AWS, Azure, GCP)',
       'Enterprise Architecture'
     ]
   },
@@ -99,19 +87,21 @@ export const siteContent = {
     subtitle: 'Real transformations, measurable impact',
     studies: [
       {
-        company: 'Global Manufacturing Leader',
-        industry: 'Manufacturing',
-        challenge: 'Manual quality control processes causing 15% defect rate',
-        solution: 'Implemented computer vision-based quality inspection system',
+        company: 'National Healthcare Leader',
+        industry: 'Healthcare',
+        challenge:
+          'Manual call process with contact center leads to lengthly delays and high cost',
+        solution:
+          'Leveraging GenAI, introduced solution to automate and reduce the manual process',
         results: [
-          '92% reduction in defects',
+          '80% reduction in operational costs',
           '$12M annual savings',
-          '3x faster inspection speed'
+          '48 hr to 20 min faster resolution speed'
         ]
       },
       {
-        company: 'Fortune 100 Financial Services',
-        industry: 'Financial Services',
+        company: 'National Education Institution',
+        industry: 'Education',
         challenge: 'Manual document processing taking 48+ hours',
         solution: 'Deployed NLP-powered document automation platform',
         results: [
@@ -121,14 +111,14 @@ export const siteContent = {
         ]
       },
       {
-        company: 'Enterprise Healthcare Provider',
-        industry: 'Healthcare',
-        challenge: 'Inefficient patient scheduling and resource allocation',
-        solution: 'AI-driven predictive scheduling and capacity optimization',
+        company: 'National Education Institution',
+        industry: 'Education',
+        challenge: 'Inefficient lead to sales rep resource allocation',
+        solution: 'AI-driven predictive lead to sales rep optimization',
         results: [
-          '40% improvement in utilization',
-          '25% reduction in wait times',
-          '$8M operational savings'
+          '90% reduction in manual intervention',
+          '95% full utilization of sales resources',
+          '$30M in new revenue generated'
         ]
       }
     ]
@@ -136,52 +126,8 @@ export const siteContent = {
   contact: {
     title: 'Ready to Transform Your Enterprise?',
     subtitle: "Let's discuss how AI can drive your business forward",
-    form: {
-      fields: [
-        { name: 'name', label: 'Full Name', type: 'text', required: true },
-        {
-          name: 'email',
-          label: 'Business Email',
-          type: 'email',
-          required: true
-        },
-        { name: 'company', label: 'Company', type: 'text', required: true },
-        { name: 'role', label: 'Your Role', type: 'text', required: true },
-        {
-          name: 'budget',
-          label: 'Project Budget Range',
-          type: 'select',
-          options: [
-            '< $100K',
-            '$100K - $500K',
-            '$500K - $1M',
-            '$1M - $5M',
-            '$5M+'
-          ]
-        },
-        {
-          name: 'timeline',
-          label: 'Desired Timeline',
-          type: 'select',
-          options: [
-            'Immediate',
-            'Within 3 months',
-            '3-6 months',
-            '6-12 months',
-            'Planning phase'
-          ]
-        },
-        {
-          name: 'message',
-          label: 'Project Details',
-          type: 'textarea',
-          required: true
-        }
-      ]
-    },
     info: {
-      address:
-        'We have presence in Vancouver, BC, Canada and Ottawa, ON, Canada',
+      address: 'We have presence in Vancouver and Ottawa',
       phone: '+1 (123) 456-7890',
       email: 'joshua.chan@aspirare.ai'
     }
