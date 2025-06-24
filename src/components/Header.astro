@@ -1,5 +1,7 @@
 ---
 import { siteContent } from '../content/site'
+import { Image } from 'astro:assets'
+import logo from '../assets/images/logo.png'
 // Get current page path to determine if we're on a policy page
 const currentPath = Astro.url.pathname
 const isHomePage = currentPath === '/'
@@ -12,12 +14,14 @@ const baseUrl = isHomePage ? '' : '/'
       <div class='nav-content'>
         <div class='logo'>
           <a href='/' class='logo-link'>
-            <img
-              src='../assets/images/logo.png'
-              astro:src='../assets/images/logo.png'
-              alt='Logo'
+            <Image
+              id='nav-bg'
+              src={logo}
+              aria-hidden
+              alt='logo'
               style='width: 200px; height: 50px;'
             />
+
             <span class='logo-text'>{siteContent.company.name}</span>
           </a>
         </div>
