@@ -3,6 +3,10 @@ import { siteContent } from '../content/site'
 const { default: aspirareLogoHtml } = await import(
   `../assets/svg/aspirareLogo.svg?raw`
 )
+// Get current page path to determine if we're on a policy page
+const currentPath = Astro.url.pathname
+const isHomePage = currentPath === '/'
+const baseUrl = isHomePage ? '' : '/'
 ---
 
 <header class='header'>
@@ -17,11 +21,11 @@ const { default: aspirareLogoHtml } = await import(
         </div>
 
         <div class='nav-links' id='nav-links'>
-          <a href='#services' class='nav-link'>Services</a>
-          <a href='#about' class='nav-link'>About</a>
-          <a href='#case-studies' class='nav-link'>Case Studies</a>
-          <a href='#contact' class='nav-link'>Contact</a>
-          <a href='#contact' class='btn btn-primary'>Get Started</a>
+          <a href={`${baseUrl}#services`} class='nav-link'>Services</a>
+          <a href={`${baseUrl}#about`} class='nav-link'>About</a>
+          <a href={`${baseUrl}#case-studies`} class='nav-link'>Case Studies</a>
+          <a href={`${baseUrl}#contact`} class='nav-link'>Contact</a>
+          <a href={`${baseUrl}#contact`} class='btn btn-primary'>Get Started</a>
         </div>
 
         <button
@@ -218,21 +222,28 @@ const { default: aspirareLogoHtml } = await import(
     }
   })
 
-  // Smooth scroll for navigation links with offset
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  // Enhanced navigation handling for both same-page and cross-page navigation
+  document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault()
-      const targetId = this.getAttribute('href')
-      const target = document.querySelector(targetId)
-      if (target) {
-        const headerHeight = 80 // Height of fixed header
-        const targetPosition = target.offsetTop - headerHeight
+      const href = this.getAttribute('href')
+      if (!href) return
 
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        })
+      // Check if it's a same-page anchor link
+      if (href.startsWith('#')) {
+        e.preventDefault()
+        const target = document.querySelector(href)
+        if (target) {
+          const headerHeight = 80
+          const targetPosition = target.offsetTop - headerHeight
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          })
+        }
       }
+      // For cross-page navigation (like /#services from policy pages), let the browser handle it naturally
+      // The browser will navigate to the page and then scroll to the anchor
     })
   })
 </script>
