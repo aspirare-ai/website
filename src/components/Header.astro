@@ -1,8 +1,5 @@
 ---
 import { siteContent } from '../content/site'
-const { default: aspirareLogoHtml } = await import(
-  `../assets/svg/aspirareLogo.svg?raw`
-)
 // Get current page path to determine if we're on a policy page
 const currentPath = Astro.url.pathname
 const isHomePage = currentPath === '/'
@@ -15,7 +12,12 @@ const baseUrl = isHomePage ? '' : '/'
       <div class='nav-content'>
         <div class='logo'>
           <a href='/' class='logo-link'>
-            <Fragment set:html={aspirareLogoHtml} />
+            <img
+              src='../assets/images/logo.png'
+              astro:src='../assets/images/logo.png'
+              alt='Logo'
+              style='width: 200px; height: 50px;'
+            />
             <span class='logo-text'>{siteContent.company.name}</span>
           </a>
         </div>
