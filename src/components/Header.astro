@@ -1,5 +1,4 @@
 ---
-import { siteContent } from '../content/site'
 import { Image } from 'astro:assets'
 import logo from '../assets/images/logo.png'
 // Get current page path to determine if we're on a policy page
@@ -21,8 +20,6 @@ const baseUrl = isHomePage ? '' : '/'
               alt='logo'
               style='width: 200px; height: 50px;'
             />
-
-            <span class='logo-text'>{siteContent.company.name}</span>
           </a>
         </div>
 
