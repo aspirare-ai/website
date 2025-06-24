@@ -19,7 +19,7 @@ export const siteContent = {
       { value: '80%', label: 'Average Cost Reduction' },
       { value: '$50M', label: 'Client Value Generated' },
       { value: '100%', label: 'Client Retention Rate' },
-      { value: '2-3', label: 'Beginning to End Deployment' }
+      { value: '2-3 Months', label: 'Beginning to End Deployment' }
     ]
   },
   services: {
@@ -128,7 +128,7 @@ export const siteContent = {
     subtitle: "Let's discuss how AI can drive your business forward",
     info: {
       address: 'We have presence in Vancouver and Ottawa',
-      phone: '+1 (123) 456-7890',
+      phone: '+1 (866) 244-2233',
       email: 'joshua.chan@aspirare.ai'
     }
   }
