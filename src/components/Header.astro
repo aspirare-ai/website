@@ -16,7 +16,7 @@ const { default: aspirareLogoHtml } = await import(
           </a>
         </div>
 
-        <div class='nav-links'>
+        <div class='nav-links' id='nav-links'>
           <a href='#services' class='nav-link'>Services</a>
           <a href='#about' class='nav-link'>About</a>
           <a href='#case-studies' class='nav-link'>Case Studies</a>
@@ -24,7 +24,11 @@ const { default: aspirareLogoHtml } = await import(
           <a href='#contact' class='btn btn-primary'>Get Started</a>
         </div>
 
-        <button class='mobile-menu-btn' aria-label='Toggle menu'>
+        <button
+          class='mobile-menu-btn'
+          id='mobile-menu-btn'
+          aria-label='Toggle menu'
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -45,6 +49,7 @@ const { default: aspirareLogoHtml } = await import(
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-gray-200);
     transition: all 0.3s ease;
+    height: 80px;
   }
 
   .nav-content {
@@ -52,6 +57,7 @@ const { default: aspirareLogoHtml } = await import(
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-sm) 0;
+    height: 80px;
   }
 
   .logo-link {
@@ -109,6 +115,7 @@ const { default: aspirareLogoHtml } = await import(
     border: none;
     cursor: pointer;
     padding: var(--spacing-xs);
+    z-index: 1001;
   }
 
   .mobile-menu-btn span {
@@ -116,20 +123,91 @@ const { default: aspirareLogoHtml } = await import(
     height: 2px;
     background: var(--color-gray-800);
     transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
   @media (max-width: 768px) {
     .nav-links {
-      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      padding: var(--spacing-lg);
+      gap: var(--spacing-md);
+      border-bottom: 1px solid var(--color-gray-200);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
     }
 
     .mobile-menu-btn {
       display: flex;
     }
+
+    .nav-link {
+      padding: var(--spacing-xs) 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 200px;
+    }
   }
 </style>
 
 <script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn')
+  const navLinks = document.getElementById('nav-links')
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active')
+    navLinks?.classList.toggle('active')
+  })
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn?.classList.remove('active')
+      navLinks?.classList.remove('active')
+    })
+  })
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (
+      !mobileMenuBtn?.contains(e.target as Node) &&
+      !navLinks?.contains(e.target as Node)
+    ) {
+      mobileMenuBtn?.classList.remove('active')
+      navLinks?.classList.remove('active')
+    }
+  })
+
   // Add scroll effect to header
   window.addEventListener('scroll', () => {
     const header = document.querySelector('.header')
@@ -140,15 +218,19 @@ const { default: aspirareLogoHtml } = await import(
     }
   })
 
-  // Smooth scroll for navigation links
+  // Smooth scroll for navigation links with offset
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
-      const target = document.querySelector(this.getAttribute('href'))
+      const targetId = this.getAttribute('href')
+      const target = document.querySelector(targetId)
       if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+        const headerHeight = 80 // Height of fixed header
+        const targetPosition = target.offsetTop - headerHeight
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
         })
       }
     })
