@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title='Privacy Policy - Aspirare'
+  description='Privacy Policy for Aspirare - Learn how we protect and handle your personal information.'
+>
+  <Header />
+  <main class='policy-page'>
+    <div class='container'>
+      <div class='policy-content'>
+        <div class='policy-header'>
+          <h1 class='policy-title'>Privacy Policy</h1>
+          <p class='policy-subtitle'>Last updated: June 2025</p>
+        </div>
+
+        <div class='policy-body'>
+          <section class='policy-section'>
+            <h2>Information We Collect</h2>
+            <p>
+              We collect information you provide directly to us, such as when
+              you contact us through our website, request a consultation, or
+              engage our services.
+            </p>
+            <ul>
+              <li>Contact information (name, email address, phone number)</li>
+              <li>Company information and professional details</li>
+              <li>Project requirements and business needs</li>
+              <li>Communication preferences</li>
+            </ul>
+          </section>
+
+          <section class='policy-section'>
+            <h2>How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+              <li>Provide and improve our AI consulting services</li>
+              <li>Respond to your inquiries and requests</li>
+              <li>Send you relevant business communications</li>
+              <li>Analyze and improve our website and services</li>
+              <li>Comply with legal obligations</li>
+            </ul>
+          </section>
+
+          <section class='policy-section'>
+            <h2>Information Sharing</h2>
+            <p>
+              We do not sell, trade, or otherwise transfer your personal
+              information to third parties without your consent, except as
+              described in this policy:
+            </p>
+            <ul>
+              <li>With service providers who assist in our operations</li>
+              <li>When required by law or to protect our rights</li>
+              <li>In connection with a business transaction</li>
+            </ul>
+          </section>
+
+          <section class='policy-section'>
+            <h2>Data Security</h2>
+            <p>
+              We implement appropriate technical and organizational measures to
+              protect your personal information against unauthorized access,
+              alteration, disclosure, or destruction.
+            </p>
+          </section>
+
+          <section class='policy-section'>
+            <h2>Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+              <li>Access and update your personal information</li>
+              <li>Request deletion of your personal information</li>
+              <li>Opt-out of marketing communications</li>
+              <li>Request a copy of your personal information</li>
+            </ul>
+          </section>
+
+          <section class='policy-section'>
+            <h2>Contact Us</h2>
+            <p>
+              If you have any questions about this Privacy Policy, please
+              contact us at:
+            </p>
+            <div class='contact-info'>
+              <p><strong>Email:</strong> joshua.chan@aspirare.ai</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .policy-page {
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+    background: var(--color-gray-50);
+  }
+
+  .policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .policy-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .policy-title {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gray-900);
+  }
+
+  .policy-subtitle {
+    color: var(--color-gray-600);
+    font-size: 1rem;
+  }
+
+  .policy-body {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+  }
+
+  .policy-section {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .policy-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .policy-section h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+  }
+
+  .policy-section p {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+  }
+
+  .policy-section ul {
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .policy-section li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+    color: var(--color-gray-600);
+  }
+
+  .contact-info {
+    background: var(--color-gray-50);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .contact-info p {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .contact-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .policy-content {
+      padding: var(--spacing-lg) 0;
+    }
+
+    .policy-header,
+    .policy-body {
+      padding: var(--spacing-md);
+    }
+
+    .policy-title {
+      font-size: 2rem;
+    }
+  }
+</style>
