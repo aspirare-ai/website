@@ -102,12 +102,12 @@ export const siteContent = {
       {
         company: 'National Education Institution',
         industry: 'Education',
-        challenge: 'Manual document processing taking 48+ hours',
-        solution: 'Deployed NLP-powered document automation platform',
+        challenge: 'Curriculum development takes 12 months to develop a new program',
+        solution: 'Deployed a GenAI-powered solution that automates entire workflow',
         results: [
-          '95% faster processing',
-          '60% cost reduction',
-          '99.8% accuracy rate'
+          'From months to days',
+          '90% cost reduction in contracting',
+          '95.8% reduction in time to market'
         ]
       },
       {
