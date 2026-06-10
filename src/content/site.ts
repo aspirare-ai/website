@@ -15,11 +15,11 @@ export const siteContent = {
       secondary: 'View Case Studies'
     },
     metrics: [
-      { value: '7', label: 'AI Projects Delivered' },
-      { value: '80%', label: 'Average Cost Reduction' },
-      { value: '$50M', label: 'Client Value Generated' },
+      { value: '10+', label: 'AI Projects Delivered' },
+      { value: '50-70%', label: 'Average Cost Reduction' },
+      { value: '$50M+', label: 'Client Value Generated' },
       { value: '100%', label: 'Client Retention Rate' },
-      { value: '2-3 Months', label: 'Beginning to End Deployment' }
+      { value: '1-3 Months', label: 'Beginning to End Deployment' }
     ]
   },
   services: {
@@ -72,7 +72,7 @@ export const siteContent = {
       { number: '5+', label: 'Enterprise Clients' },
       { number: '10+', label: 'Technical Experts' },
       { number: '5+', label: 'Industries Served' },
-      { number: '25+', label: 'Years Experience' }
+      { number: '50+', label: 'Years Experience' }
     ],
     expertise: [
       'Large Language Models Development',
@@ -95,15 +95,17 @@ export const siteContent = {
           'Leveraging GenAI, introduced solution to automate and reduce the manual process',
         results: [
           '80% reduction in operational costs',
-          '$12M annual savings',
-          '48 hr to 20 min faster resolution speed'
+          '$12M+ annual savings',
+          '48 hr to 20 min -- faster resolution speed'
         ]
       },
       {
         company: 'National Education Institution',
         industry: 'Education',
-        challenge: 'Curriculum development takes 12 months to develop a new program',
-        solution: 'Deployed a GenAI-powered solution that automates entire workflow',
+        challenge:
+          'Curriculum development takes 12 months to develop a new program',
+        solution:
+          'Deployed a GenAI-powered solution that automates entire workflow',
         results: [
           'From months to days',
           '90% cost reduction in contracting',
@@ -116,9 +118,9 @@ export const siteContent = {
         challenge: 'Inefficient lead to sales rep resource allocation',
         solution: 'AI-driven predictive lead to sales rep optimization',
         results: [
-          '90% reduction in manual intervention',
-          '95% full utilization of sales resources',
-          '$30M in new revenue generated'
+          '95%+ reduction in manual intervention',
+          '+15% increase in revenue',
+          '$25M+ in new revenue generated in 1 year'
         ]
       }
     ]
@@ -127,7 +129,7 @@ export const siteContent = {
     title: 'Ready to Transform Your Enterprise?',
     subtitle: "Let's discuss how AI can drive your business forward",
     info: {
-      address: 'We have presence in Vancouver and Ottawa',
+      address: 'We have presence in Ottawa and Vancouver',
       phone: '+1 (866) 244-2233',
       email: 'joshua.chan@aspirare.ai'
     }

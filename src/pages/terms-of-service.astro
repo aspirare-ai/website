@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import { termsOfService } from '../content/terms-of-service'
 import '../styles/policy.css'
 ---
 
@@ -14,110 +15,38 @@ import '../styles/policy.css'
     <div class='container'>
       <div class='policy-content'>
         <div class='policy-header'>
-          <h1 class='policy-title'>Terms of Service</h1>
-          <p class='policy-subtitle'>Last updated: June 2025</p>
+          <h1 class='policy-title'>{termsOfService.title}</h1>
+          <p class='policy-subtitle'>
+            Last updated: {termsOfService.lastUpdated}
+          </p>
         </div>
 
         <div class='policy-body'>
-          <section class='policy-section'>
-            <h2>Acceptance of Terms</h2>
-            <p>
-              By accessing and using Aspirare's services, you accept and agree
-              to be bound by the terms and provision of this agreement.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Services Description</h2>
-            <p>
-              Aspirare provides enterprise AI transformation services including:
-            </p>
-            <ul>
-              <li>AI strategy and roadmap development</li>
-              <li>Process automation implementation</li>
-              <li>Data intelligence and analytics</li>
-              <li>Enterprise AI integration</li>
-              <li>Consulting and advisory services</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Client Responsibilities</h2>
-            <p>As a client, you agree to:</p>
-            <ul>
-              <li>Provide accurate and complete information</li>
-              <li>Cooperate in good faith during project execution</li>
-              <li>Maintain confidentiality of proprietary methodologies</li>
-              <li>Make timely payments as agreed</li>
-              <li>Provide necessary access to systems and personnel</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Intellectual Property</h2>
-            <p>
-              All intellectual property rights in our methodologies, frameworks,
-              and deliverables remain with Aspirare unless otherwise agreed in
-              writing. Client-specific implementations and data remain the
-              property of the client.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Confidentiality</h2>
-            <p>
-              We maintain strict confidentiality regarding all client
-              information and business operations. Both parties agree to protect
-              confidential information disclosed during the engagement.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Limitation of Liability</h2>
-            <p>
-              Our liability is limited to the fees paid for the specific
-              services. We are not liable for indirect, incidental, or
-              consequential damages arising from the use of our services.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Payment Terms</h2>
-            <p>
-              Payment terms are specified in individual service agreements.
-              Generally:
-            </p>
-            <ul>
-              <li>Invoices are due within 30 days of receipt</li>
-              <li>Late payments may incur interest charges</li>
-              <li>Services may be suspended for non-payment</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Termination</h2>
-            <p>
-              Either party may terminate services with written notice as
-              specified in the service agreement. Termination does not relieve
-              obligations for services already provided.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Governing Law</h2>
-            <p>
-              These terms are governed by the laws of Ontario. Any disputes will
-              be resolved through binding arbitration in Ottawa, ON.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Contact Information</h2>
-            <p>For questions regarding these terms, please contact us at:</p>
-            <div class='contact-info'>
-              <p><strong>Email:</strong> joshua.chan@aspirare.ai</p>
-            </div>
-          </section>
+          {
+            termsOfService.sections.map((section) => (
+              <section class='policy-section'>
+                <h2>{section.title}</h2>
+                {section.body.map((item) =>
+                  Array.isArray(item) ? (
+                    <ul>
+                      {item.map((li) => (
+                        <li>{li}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{item}</p>
+                  )
+                )}
+                {section.contact && (
+                  <div class='contact-info'>
+                    <p>
+                      <strong>Email:</strong> {section.contact.email}
+                    </p>
+                  </div>
+                )}
+              </section>
+            ))
+          }
         </div>
       </div>
     </div>

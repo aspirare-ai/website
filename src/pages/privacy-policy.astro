@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import { privacyPolicy } from '../content/privacy-policy'
 import '../styles/policy.css'
 ---
 
@@ -14,82 +15,38 @@ import '../styles/policy.css'
     <div class='container'>
       <div class='policy-content'>
         <div class='policy-header'>
-          <h1 class='policy-title'>Privacy Policy</h1>
-          <p class='policy-subtitle'>Last updated: June 2025</p>
+          <h1 class='policy-title'>{privacyPolicy.title}</h1>
+          <p class='policy-subtitle'>
+            Last updated: {privacyPolicy.lastUpdated}
+          </p>
         </div>
 
         <div class='policy-body'>
-          <section class='policy-section'>
-            <h2>Information We Collect</h2>
-            <p>
-              We collect information you provide directly to us, such as when
-              you contact us through our website, request a consultation, or
-              engage our services.
-            </p>
-            <ul>
-              <li>Contact information (name, email address, phone number)</li>
-              <li>Company information and professional details</li>
-              <li>Project requirements and business needs</li>
-              <li>Communication preferences</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
-            <ul>
-              <li>Provide and improve our AI consulting services</li>
-              <li>Respond to your inquiries and requests</li>
-              <li>Send you relevant business communications</li>
-              <li>Analyze and improve our website and services</li>
-              <li>Comply with legal obligations</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Information Sharing</h2>
-            <p>
-              We do not sell, trade, or otherwise transfer your personal
-              information to third parties without your consent, except as
-              described in this policy:
-            </p>
-            <ul>
-              <li>With service providers who assist in our operations</li>
-              <li>When required by law or to protect our rights</li>
-              <li>In connection with a business transaction</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Data Security</h2>
-            <p>
-              We implement appropriate technical and organizational measures to
-              protect your personal information against unauthorized access,
-              alteration, disclosure, or destruction.
-            </p>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Your Rights</h2>
-            <p>You have the right to:</p>
-            <ul>
-              <li>Access and update your personal information</li>
-              <li>Request deletion of your personal information</li>
-              <li>Opt-out of marketing communications</li>
-              <li>Request a copy of your personal information</li>
-            </ul>
-          </section>
-
-          <section class='policy-section'>
-            <h2>Contact Us</h2>
-            <p>
-              If you have any questions about this Privacy Policy, please
-              contact us at:
-            </p>
-            <div class='contact-info'>
-              <p><strong>Email:</strong> joshua.chan@aspirare.ai</p>
-            </div>
-          </section>
+          {
+            privacyPolicy.sections.map((section) => (
+              <section class='policy-section'>
+                <h2>{section.title}</h2>
+                {section.body.map((item) =>
+                  Array.isArray(item) ? (
+                    <ul>
+                      {item.map((li) => (
+                        <li>{li}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{item}</p>
+                  )
+                )}
+                {section.contact && (
+                  <div class='contact-info'>
+                    <p>
+                      <strong>Email:</strong> {section.contact.email}
+                    </p>
+                  </div>
+                )}
+              </section>
+            ))
+          }
         </div>
       </div>
     </div>
