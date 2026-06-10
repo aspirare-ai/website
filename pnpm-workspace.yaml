@@ -1,3 +1,5 @@
 allowBuilds:
   esbuild: true
   sharp: true
+overrides:
+  minimatch@9: ^9.0.7
