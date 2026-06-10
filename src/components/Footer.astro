@@ -1,5 +1,9 @@
 ---
 import { siteContent } from '../content/site'
+import AspirareLogo from '../assets/svg/aspirareLogo.svg'
+// Anchor links need a leading "/" when used from non-home pages (e.g. policy pages)
+const isHomePage = Astro.url.pathname === '/'
+const baseUrl = isHomePage ? '' : '/'
 ---
 
 <footer class='footer'>
@@ -7,7 +11,13 @@ import { siteContent } from '../content/site'
     <div class='footer-content'>
       <div class='footer-brand'>
         <div class='logo'>
-          <span class='logo-text'>{siteContent.company.name}</span>
+          <AspirareLogo
+            width={140}
+            height={34}
+            fill='currentColor'
+            role='img'
+            aria-label={siteContent.company.name}
+          />
         </div>
         <p class='footer-description'>{siteContent.company.description}</p>
       </div>
@@ -16,12 +26,19 @@ import { siteContent } from '../content/site'
         <div class='footer-section'>
           <h4 class='footer-title'>Services</h4>
           <ul class='footer-list'>
-            <li><a href='#services' class='footer-link'>AI Strategy</a></li>
             <li>
-              <a href='#services' class='footer-link'>Process Automation</a>
+              <a href={`${baseUrl}#services`} class='footer-link'>AI Strategy</a
+              >
             </li>
             <li>
-              <a href='#services' class='footer-link'>Data Intelligence</a>
+              <a href={`${baseUrl}#services`} class='footer-link'
+                >Process Automation</a
+              >
+            </li>
+            <li>
+              <a href={`${baseUrl}#services`} class='footer-link'
+                >Data Intelligence</a
+              >
             </li>
           </ul>
         </div>
@@ -29,17 +46,25 @@ import { siteContent } from '../content/site'
         <div class='footer-section'>
           <h4 class='footer-title'>Company</h4>
           <ul class='footer-list'>
-            <li><a href='#about' class='footer-link'>About Us</a></li>
             <li>
-              <a href='#case-studies' class='footer-link'>Case Studies</a>
+              <a href={`${baseUrl}#about`} class='footer-link'>About Us</a>
             </li>
-            <li><a href='#contact' class='footer-link'>Contact</a></li>
+            <li>
+              <a href={`${baseUrl}#case-studies`} class='footer-link'
+                >Case Studies</a
+              >
+            </li>
+            <li>
+              <a href={`${baseUrl}#contact`} class='footer-link'>Contact</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class='footer-bottom'>
+  <div class='footer-bottom'>
+    <div class='container'>
       <div class='footer-bottom-content'>
         <p class='copyright'>
           © 2025 {siteContent.company.legalName}. All rights reserved.
@@ -58,75 +83,69 @@ import { siteContent } from '../content/site'
 </footer>
 
 <style>
+  /* IBM dark footer (Gray 100) with hairline legal bar */
   .footer {
-    background: var(--color-gray-900);
-    color: var(--color-white);
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    background: var(--color-dark-background);
+    color: var(--color-dark-text-primary);
   }
 
   .footer-content {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: var(--spacing-2xl);
-    margin-bottom: var(--spacing-2xl);
+    gap: var(--spacing-10);
+    padding: var(--spacing-10) 0;
   }
 
   .footer-brand {
-    max-width: 400px;
+    max-width: 22rem;
   }
 
   .logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-md);
-    font-weight: 600;
-    font-size: 1.25rem;
-  }
-
-  .logo-icon {
-    font-size: 1.5rem;
+    margin-bottom: var(--spacing-05);
+    color: var(--color-dark-text-primary);
+    line-height: 0;
   }
 
   .footer-description {
-    color: var(--color-gray-300);
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.16px;
+    color: var(--color-dark-text-helper);
   }
 
   .footer-links {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    gap: var(--spacing-xl);
+    grid-template-columns: repeat(2, 11.5rem);
+    gap: var(--spacing-07);
   }
 
   .footer-title {
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
-    font-size: 1rem;
-    font-weight: 600;
+    color: var(--color-dark-text-primary);
+    margin-bottom: var(--spacing-05);
   }
 
   .footer-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-03);
   }
 
   .footer-link {
-    color: var(--color-gray-300);
+    color: var(--color-dark-text-secondary);
     text-decoration: none;
     font-size: 0.875rem;
-    transition: color 0.2s ease;
+    letter-spacing: 0.16px;
+    transition: color 110ms var(--ease-standard);
   }
 
   .footer-link:hover {
-    color: var(--color-white);
+    color: var(--color-dark-text-primary);
+    text-decoration: underline;
   }
 
   .footer-bottom {
-    border-top: 1px solid #374151;
-    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-dark-border);
   }
 
   .footer-bottom-content {
@@ -134,56 +153,61 @@ import { siteContent } from '../content/site'
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-05);
+    min-height: 3rem;
+    padding: var(--spacing-05) 0;
   }
 
   .copyright {
-    color: var(--color-gray-400);
-    font-size: 0.875rem;
+    color: var(--color-dark-text-helper);
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
   }
 
   .footer-bottom-links {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-06);
   }
 
   .footer-bottom-link {
-    color: var(--color-gray-400);
+    color: var(--color-dark-text-secondary);
     text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.2s ease;
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
+    transition: color 110ms var(--ease-standard);
   }
 
   .footer-bottom-link:hover {
-    color: var(--color-white);
+    color: var(--color-dark-text-primary);
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
-      gap: var(--spacing-xl);
+      gap: var(--spacing-08);
+      padding: var(--spacing-09) 0;
     }
 
     .footer-links {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-lg);
     }
 
     .footer-bottom-content {
       flex-direction: column;
-      text-align: center;
-      gap: var(--spacing-sm);
+      align-items: flex-start;
     }
   }
 
   @media (max-width: 480px) {
     .footer-links {
       grid-template-columns: 1fr;
+      gap: var(--spacing-06);
     }
 
     .footer-bottom-links {
       flex-direction: column;
-      gap: var(--spacing-xs);
+      gap: var(--spacing-03);
     }
   }
 </style>

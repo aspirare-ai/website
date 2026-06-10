@@ -30,7 +30,7 @@ import Footer from '../components/Footer.astro'
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
         entry.target.style.animationPlayState = 'running'
       }
     })
@@ -38,29 +38,9 @@ import Footer from '../components/Footer.astro'
 
   // Observe all fade-in elements
   document.querySelectorAll('.fade-in').forEach((el) => {
-    el.style.animationPlayState = 'paused'
+    if (el instanceof HTMLElement) {
+      el.style.animationPlayState = 'paused'
+    }
     observer.observe(el)
-  })
-
-  // Add scroll progress indicator
-  const scrollProgress = document.createElement('div')
-  scrollProgress.style.cssText = `
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 0%;
-		height: 3px;
-		background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-		z-index: 9999;
-		transition: width 0.1s ease;
-	`
-  document.body.appendChild(scrollProgress)
-
-  window.addEventListener('scroll', () => {
-    const scrolled =
-      (window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight)) *
-      100
-    scrollProgress.style.width = scrolled + '%'
   })
 </script>

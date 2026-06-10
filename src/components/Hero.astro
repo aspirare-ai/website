@@ -1,193 +1,151 @@
 ---
 import { siteContent } from '../content/site'
-const { hero } = siteContent
+const { hero, company } = siteContent
 ---
 
 <section class='hero'>
-  <div class='hero-background'>
-    <div class='hero-gradient'></div>
-    <div class='hero-pattern'></div>
-  </div>
-
   <div class='container'>
-    <div class='hero-content'>
-      <div class='hero-text'>
-        <h1 class='hero-headline fade-in'>{hero.headline}</h1>
-        <p class='hero-subheadline fade-in'>{hero.subheadline}</p>
+    <p class='hero-eyebrow fade-in'>{company.tagline}</p>
+    <h1 class='hero-headline fade-in'>{hero.headline}</h1>
+    <p class='hero-subheadline fade-in'>{hero.subheadline}</p>
 
-        <div class='hero-cta fade-in'>
-          <a href='#contact' class='btn btn-primary'>{hero.cta.primary}</a>
-          <a href='#case-studies' class='btn btn-secondary'
-            >{hero.cta.secondary}</a
-          >
-        </div>
-      </div>
+    <div class='hero-cta fade-in'>
+      <a href='#contact' class='btn btn-primary'>
+        {hero.cta.primary}
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 16 16'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='1.5'
+          aria-hidden='true'
+        >
+          <path d='M1 8h13M9 3l5 5-5 5'></path>
+        </svg>
+      </a>
+      <a href='#case-studies' class='btn btn-secondary'>
+        {hero.cta.secondary}
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 16 16'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='1.5'
+          aria-hidden='true'
+        >
+          <path d='M1 8h13M9 3l5 5-5 5'></path>
+        </svg>
+      </a>
+    </div>
 
-      <div class='hero-metrics fade-in'>
-        {
-          hero.metrics.map((metric) => (
-            <div class='metric'>
-              <div class='metric-value'>{metric.value}</div>
-              <div class='metric-label'>{metric.label}</div>
-            </div>
-          ))
-        }
-      </div>
+    <div class='hero-metrics fade-in'>
+      {
+        hero.metrics.map((metric) => (
+          <div class='metric'>
+            <div class='metric-value'>{metric.value}</div>
+            <div class='metric-label'>{metric.label}</div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style>
+  /* IBM leadspace: white, left-aligned, large Light (300) type */
   .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding-top: 80px; /* Account for fixed header */
+    background: var(--color-background);
+    padding-top: calc(var(--header-height) + var(--spacing-11));
+    padding-bottom: var(--spacing-11);
   }
 
-  .hero-background {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-  }
-
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-accent) 100%
-    );
-    opacity: 0.05;
-  }
-
-  .hero-pattern {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(
-        circle at 25% 25%,
-        var(--color-primary) 1px,
-        transparent 1px
-      ),
-      radial-gradient(
-        circle at 75% 75%,
-        var(--color-accent) 1px,
-        transparent 1px
-      );
-    background-size: 60px 60px;
-    opacity: 0.1;
-  }
-
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-2xl);
-    align-items: center;
-    width: 100%;
-  }
-
-  .hero-text {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+  .hero-eyebrow {
+    font-size: 0.875rem;
+    letter-spacing: 0.16px;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-05);
   }
 
   .hero-headline {
-    margin-bottom: var(--spacing-md);
-    background: linear-gradient(
-      135deg,
-      var(--color-primary),
-      var(--color-accent)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    max-width: 56rem;
+    margin-bottom: var(--spacing-06);
   }
 
   .hero-subheadline {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-xl);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.34;
+    color: var(--color-text-secondary);
+    max-width: 40rem;
+    margin-bottom: var(--spacing-09);
   }
 
+  /* Carbon button pair: butted edge-to-edge, equal widths */
   .hero-cta {
     display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-11);
   }
 
+  .hero-cta .btn {
+    flex: 1 1 0;
+    max-width: 20rem;
+    min-width: 13rem;
+  }
+
+  /* Hairline-separated stat tiles */
   .hero-metrics {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--spacing-lg);
-    max-width: 600px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
   }
 
   .metric {
-    text-align: center;
-    padding: var(--spacing-md);
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    transition: transform 0.3s ease;
-  }
-
-  .metric:hover {
-    transform: translateY(-5px);
+    background: var(--color-background);
+    outline: 1px solid var(--color-border-subtle);
+    padding: var(--spacing-06) var(--spacing-05);
   }
 
   .metric-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-xs);
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--color-interactive);
+    margin-bottom: var(--spacing-03);
   }
 
   .metric-label {
     font-size: 0.875rem;
-    color: var(--color-gray-600);
-    font-weight: 500;
+    letter-spacing: 0.16px;
+    color: var(--color-text-secondary);
   }
 
   @media (max-width: 768px) {
     .hero {
-      min-height: calc(100vh - 80px); /* Adjust for mobile header */
-      padding-top: 100px; /* Extra padding for mobile */
-    }
-
-    .hero-headline {
-      font-size: 2.5rem;
-    }
-
-    .hero-subheadline {
-      font-size: 1.125rem;
+      padding-top: calc(var(--header-height) + var(--spacing-09));
+      padding-bottom: var(--spacing-09);
     }
 
     .hero-cta {
       flex-direction: column;
-      align-items: center;
+    }
+
+    .hero-cta .btn {
+      flex: none;
+      max-width: 20rem;
+      width: 100%;
     }
 
     .hero-metrics {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-sm);
+      grid-template-columns: 1fr 1fr;
     }
+  }
 
-    .metric {
-      padding: var(--spacing-sm);
-    }
-
-    .metric-value {
-      font-size: 1.5rem;
+  @media (max-width: 480px) {
+    .hero-metrics {
+      grid-template-columns: 1fr;
     }
   }
 </style>
